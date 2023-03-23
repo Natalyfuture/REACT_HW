@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import './App.css';
 
 const items = [
@@ -29,79 +29,46 @@ const items = [
 
 ]
 
-/* const pages = [
-  {
-    home: <HomePage/>,
-    news: <NewsPage/>,
-    callBack: <CallBackPage/>,
-    contacts: <ContactsPage/>,
-  }
-] */
-
-function App() {
+class App extends React.Component {
   
-    const [currentPage, setCurrentPage] = useState('Home');
-    
+    state = {
+      currentPage: 'Home'
+    }
+  
 
-    const handleDisplay = (title) => {
-      setCurrentPage(title); 
-      console.log(setCurrentPage) 
+    handlePages = (title) => {
+     
+      this.setState({currentPage: title}); 
+      
   }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-     
-        <div>
-       
+  render(){
+    return (
+      <>
+        
         <nav className="App-navigation">
            {items.map(({id, title, href}) => (
-              <div>
-                   <a 
+                    <a 
+                      key={id}
                       href={href}
-                      onClick={() => handleDisplay({title})}
+                      onClick={() => this.handlePages(title)}
                       className="App-link" 
-                      key={id}>
+                      >
                       {title}
-                      </a> 
-                     
-              </div>
+                    </a> 
              ))}
              
         </nav>
-        <div>
-
-{currentPage === 'Home' && <HomePage/>}
-{currentPage === 'News' && <NewsPage/>}
-{currentPage === 'CallBack' && <CallBackPage/>}
-{currentPage === 'Contacts' && <ContactsPage/>}
-
-
-</div>
-     
-      
+       <div className="App-current_page">
+          {this.state.currentPage}
         </div>
-         
-      </header>
-    </div>
-  );
+      </>
+
+    );
+  }
 }
 
-function HomePage (){
-  return <h4>Home page</h4>
-}
 
-function NewsPage (){
-  return <h4>News page</h4>
-}
-
-function ContactsPage (){
-  return <h4>Contacts page</h4>
-}
-
-function CallBackPage (){
-  return <h4>Contacts page</h4>
-}
 
 
 
