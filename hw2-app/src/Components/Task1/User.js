@@ -4,7 +4,7 @@ import '../../index.css';
 const UserCard = ({name, surname, age}) => {
 return(
     <div>
-        <div>User infirmation:</div>
+        <div>User information:</div>
         <div>Name: {name}</div>
         <div>Surname: {surname}</div>
         <div>Age: {age}</div>
@@ -12,7 +12,7 @@ return(
 )
 }
 
-export default class User extends React.Component {
+export class User extends React.Component {
     state = {
         name: 'Nikita',
         surname: 'Ivanov',
@@ -23,8 +23,7 @@ export default class User extends React.Component {
             <>
             <div>TASK 1</div>
             <UserCard {...this.state} />
-           
-           
+            
             </>
         )
     }

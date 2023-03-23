@@ -1,24 +1,54 @@
-
+import React from 'react';
 import './App.css';
+import { User } from './Components/Task1/User';
 
-function App() {
+const UserCardText = (props) => {
+  const {name, surname, age} = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <div>
+    My info: {name}-{surname}-{age}
+  </div>
+
+  )
 }
 
-/* export App; */
+const AgeOption = ({age, name}) => {
+  const children = `
+  Hello, ${name}, I can't get you something to drink.
+  `;
+  const adult = `
+  Hello, ${name}, I can get you something to drink.
+  `;
+
+  console.log(children)
+  console.log(adult)
+   return age < 18 ? children : adult;
+}
+
+
+
+export default class App extends React.Component {
+  state = {
+    name: 'Veronika',
+    surname: 'Ignatova',
+    age: '26',
+  }
+  render(){
+    return(
+      <>
+      <User />
+      
+      <UserCardText {...this.state} />
+      
+      <AgeOption age={this.state.age} name={this.state.name} />
+      
+      </>
+     
+      
+      
+    )
+  }
+  
+}
+
+
