@@ -1,5 +1,4 @@
 import React from 'react';
-/* import { withRouter } from 'react-router-dom'; */
 import '../User.css';
 
 
@@ -31,9 +30,3 @@ export class LifeCycle extends React.Component {
     );
   }
 }
-
-
-
- /*  <Routes>
-      <Route path='/App' component={lifeCycle} />
-      </Routes> */
