@@ -1,0 +1,24 @@
+.User{
+    margin-left: 25px;
+}
+
+.task{
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.User-info{
+    text-decoration: underline;
+    font-style: 22px;
+    margin-bottom: 10px;
+}
+
+.User-text{
+    margin: 15px 0 ;
+}
+
+.Form-content{
+    margin-left: 25px;
+}
