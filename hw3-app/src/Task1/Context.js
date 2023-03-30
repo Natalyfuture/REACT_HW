@@ -23,19 +23,13 @@ class AlbumList extends React.Component {
   }
 }
 
+
 export class DataProvider extends React.Component {
-  constructor(props) {
-    super(props);
-   
-    this.state = {
+    state = {
       albums: [],
       newAlbums: [],
-      n : props || 0,
+      n : 0,
     };
-  } 
-  handleDataUpdate = (data) => {
-    this.setState({ n: data });
-  }
 
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/albums')
@@ -46,14 +40,15 @@ export class DataProvider extends React.Component {
         n : albums.length,
       }));
     }
+  
+  handleDataUpdate = (data) => {
+    const { albums } = this.state;
+    const newAlbums = albums.slice(0, data);
 
-  componentDidUpdate(prevProps, prevState) {
-    if(prevProps.n !== this.props.n) {
-      const { albums } = this.state;
-      const newAlbums = albums.slice(0, this.props.n);
-      this.setState({ newAlbums });
-    }
-  }  
+    this.setState({ 
+      newAlbums,
+      n: data });
+  }
  
   render() {
     
