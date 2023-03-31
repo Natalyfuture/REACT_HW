@@ -1,28 +1,27 @@
 import React from 'react';
-import InputProvider from '../Input';
 
 export const DataContext = React.createContext();
 
-class AlbumList extends React.Component {
+/* export class AlbumList extends React.Component {
   static contextType = DataContext;
  
   render() {
   
-    const { newAlbums } = this.context;
+   const { newAlbums } = this.context; 
     
     return (
-    
+     
       <div>
-        {newAlbums.map((album, index) => (
-          <div key={album.id}>
-            <h3>{album.id} - {index} - {album.title}</h3>
-          </div>
-        ))}
-      </div>
+      {newAlbums.map((album, index) => (
+        <div key={album.id}>
+          <h3>{album.id} - {index} - {album.title}</h3>
+        </div>
+      ))}
+    </div>
     );
   }
 }
-
+ */
 
 export class DataProvider extends React.Component {
     state = {
@@ -38,7 +37,8 @@ export class DataProvider extends React.Component {
         albums: albums,
         newAlbums: albums.slice(),
         n : albums.length,
-      }));
+      }))
+      .catch(error => console.log(error));
     }
   
   handleDataUpdate = (data) => {
@@ -51,11 +51,10 @@ export class DataProvider extends React.Component {
   }
  
   render() {
-    
+    console.log(this.state)
     return (
-      <DataContext.Provider value={this.state}>
-        <InputProvider onDataUpdate={this.handleDataUpdate} />
-        <AlbumList />
+      <DataContext.Provider value={{...this.state, handleDataUpdate: this.handleDataUpdate}}>
+        {this.props.children}
       </DataContext.Provider>
     );
   }

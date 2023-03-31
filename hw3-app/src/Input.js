@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
-export default function InputProvider (props) {
+
+export default function InputField (props) {
+  const ref = useRef();
+
   const handleInput = () => {
-    const data = document.getElementById('input');
-    const res = data.value;
+    
+    const res = ref.current.value;
     return res;
   }
 
@@ -14,7 +17,7 @@ export default function InputProvider (props) {
 
     return(
         <div>
-        <input id='input' placeholder='Enter number n you need' />
+        <input id='input' placeholder='Enter number n you need' ref={ref}/>
         <button onClick={dataInput}>ENTER</button>
       </div>
     )

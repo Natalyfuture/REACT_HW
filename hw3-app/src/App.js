@@ -1,15 +1,11 @@
 import './App.css';
 import { AlbumsClass } from './Task1/AlbumsClass';
 import Albums from './Task2/Album';
-/* import InputProvider from './Input'; */
-
-
-
+/* import { InputProvider } from './Task2/ContextFunc'; */
 
 function App() {
   return (
     <div className="App">
-     {/*  <InputProvider /> */}
       <AlbumsClass />
       <Albums />
     </div>

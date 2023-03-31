@@ -1,6 +1,8 @@
 import React from 'react';
 import { DataContext } from './Context';
-import { DataProvider} from './Context';
+import InputField  from '../Input';
+import { AlbumList } from './AlbumList'
+
 
 
 
@@ -10,9 +12,13 @@ export class AlbumsClass extends React.Component {
       return(
         <div>
           <h1>Task1</h1>
-          <DataProvider>
-          <DataContext />
-          </DataProvider> 
+          <DataContext.Context>
+            console.log(value)
+            {(newAlbums) => {
+              return <AlbumList  newAlbums={newAlbums}/>}
+            }
+            <InputField onDataUpdate={this.handleDataUpdate} />
+          </DataContext.Context>
         </div>
       )
       }
