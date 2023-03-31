@@ -2,27 +2,6 @@ import React from 'react';
 
 export const DataContext = React.createContext();
 
-/* export class AlbumList extends React.Component {
-  static contextType = DataContext;
- 
-  render() {
-  
-   const { newAlbums } = this.context; 
-    
-    return (
-     
-      <div>
-      {newAlbums.map((album, index) => (
-        <div key={album.id}>
-          <h3>{album.id} - {index} - {album.title}</h3>
-        </div>
-      ))}
-    </div>
-    );
-  }
-}
- */
-
 export class DataProvider extends React.Component {
     state = {
       albums: [],
@@ -51,7 +30,7 @@ export class DataProvider extends React.Component {
   }
  
   render() {
-    console.log(this.state)
+    console.log(this.context)
     return (
       <DataContext.Provider value={{...this.state, handleDataUpdate: this.handleDataUpdate}}>
         {this.props.children}
