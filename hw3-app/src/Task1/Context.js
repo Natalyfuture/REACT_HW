@@ -30,7 +30,6 @@ export class DataProvider extends React.Component {
   }
  
   render() {
-    console.log(this.context)
     return (
       <DataContext.Provider value={{...this.state, handleDataUpdate: this.handleDataUpdate}}>
         {this.props.children}
