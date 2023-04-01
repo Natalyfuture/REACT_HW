@@ -4,26 +4,23 @@ import rose from '../Video/rose.mp4'
 export function VideoPlayer() {
     const [currentTime, setCurrentTime] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
-
     const videoRef = useRef();
    
 
     const playButton = () =>{
-      console.log(111)
-        const video = videoRef.current;
-    if (!isPlaying) {
-      video.play();
-    }
-    setIsPlaying(isPlaying);
-    }
+      const video = videoRef.current;
+      if (!isPlaying) {
+        video.play();
+      }
+      setIsPlaying(isPlaying);
+      }
 
     const stopButton = () =>{
-      console.log(222)
-        const video = videoRef.current;
-    if (!isPlaying) {
-      video.pause();
-    }
-    setIsPlaying(!isPlaying);
+      const video = videoRef.current;
+      if (!isPlaying) {
+        video.pause();
+      }
+      setIsPlaying(!isPlaying);
     }
 
     const updateTime = () => {
@@ -35,7 +32,7 @@ export function VideoPlayer() {
         const video = videoRef.current;
         video.addEventListener('timeupdate', updateTime);
         return () => {
-          video.removeEventListener('timeupdate', updateTime);
+        video.removeEventListener('timeupdate', updateTime);
         };
       }, []);
 
@@ -50,14 +47,14 @@ export function VideoPlayer() {
         <>
         <h3>PART2</h3>
         <div>
-        <video ref={videoRef} controls>
-        <source src={rose} type="video/mp4" />
-        </video>
+          <video ref={videoRef} controls>
+          <source src={rose} type="video/mp4" />
+          </video>
         </div>
         <div>
-            <button onClick={playButton}>Play</button>
-            <button onClick={stopButton}>Pause</button>
-            <span>{timeVideo()}</span>
+          <button onClick={playButton}>Play</button>
+          <button onClick={stopButton}>Pause</button>
+          <span>{timeVideo()}</span>
         </div>
         </> 
     )
