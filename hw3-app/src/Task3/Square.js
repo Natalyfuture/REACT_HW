@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Square = () => {
-   const squareRef = React.createRef();
+   const squareRef = React.useRef();
 
    React.useEffect(() => {
     const timeOutId = setTimeout(() => {
@@ -13,9 +13,9 @@ export const Square = () => {
 
     return (
         <>
-        <h1>TASK3</h1>
-        <h3>PART1</h3>
-        <div style={{width: '100px', height: '100px', backgroundColor: 'blue'}} ref={squareRef}></div>
+            <h1>TASK3</h1>
+            <h3>PART1</h3>
+            <div style={{width: '100px', height: '100px', backgroundColor: 'blue'}} ref={squareRef}></div>
         </>
         
     )

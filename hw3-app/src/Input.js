@@ -5,7 +5,6 @@ export default function InputField (props) {
   const ref = useRef();
 
   const handleInput = () => {
-    
     const res = ref.current.value;
     return res;
   }
@@ -16,7 +15,7 @@ export default function InputField (props) {
   }
 
     return(
-        <div>
+      <div>
         <input id='input' placeholder='Enter number n you need' ref={ref}/>
         <button onClick={dataInput}>ENTER</button>
       </div>
