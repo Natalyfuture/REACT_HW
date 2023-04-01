@@ -9,17 +9,13 @@ export function VideoPlayer() {
 
     const playButton = () =>{
       const video = videoRef.current;
-      if (!isPlaying) {
         video.play();
-      }
       setIsPlaying(isPlaying);
       }
 
     const stopButton = () =>{
       const video = videoRef.current;
-      if (!isPlaying) {
         video.pause();
-      }
       setIsPlaying(!isPlaying);
     }
 
