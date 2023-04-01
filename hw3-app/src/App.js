@@ -2,6 +2,7 @@ import './App.css';
 import { AlbumsClass } from './Task1/AlbumsClass';
 import Albums from './Task2/Album';
 import { Square } from './Task3/Square'
+import { VideoPlayer } from './Task3/Video'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
      {/*  <AlbumsClass />
       <Albums /> */}
       <Square />
+      <VideoPlayer />
     </div>
   );
 }

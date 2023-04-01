@@ -7,6 +7,7 @@ export const Square = () => {
     const timeOutId = setTimeout(() => {
         squareRef.current.style.transform = 'translateX(200px)';
     }, 2000)
+    return () => clearTimeout(timeOutId);
     
     })
 
