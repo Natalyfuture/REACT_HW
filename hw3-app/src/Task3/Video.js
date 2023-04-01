@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import '../Video/rose-3654.mp4'
+import rose from '../Video/rose.mp4'
 
 export function VideoPlayer() {
     const [currentTime, setCurrentTime] = useState(0);
@@ -9,7 +9,6 @@ export function VideoPlayer() {
    
 
     const playButton = () =>{
-      console.log(111)
         const video = videoRef.current;
     if (!isPlaying) {
       video.play();
@@ -18,7 +17,6 @@ export function VideoPlayer() {
     }
 
     const stopButton = () =>{
-      console.log(222)
         const video = videoRef.current;
     if (isPlaying) {
       video.pause();
@@ -27,8 +25,8 @@ export function VideoPlayer() {
     }
 
     const updateTime = () => {
-        const video = videoRef.current;
-        setCurrentTime(video.currentTime);
+      const video = videoRef.current;
+      setCurrentTime(video.currentTime);
       };
 
       useEffect(() => {
@@ -51,12 +49,7 @@ export function VideoPlayer() {
         <h3>PART2</h3>
         <div>
         <video ref={videoRef} controls>
-        <source src='../Video/rose-3654.mp4' type="video/mp4" />
-        <p>
-        Your browser doesn't support HTML video. Here is a
-        <a href={`url.mp4`} >MP4</a> 
-        video
-      </p>
+        <source src={rose} type="video/mp4" />
         </video>
         </div>
         <div>
@@ -64,8 +57,6 @@ export function VideoPlayer() {
             <button onClick={stopButton}>Pause</button>
             <span>{timeVideo()}</span>
         </div>
-        </>
-       
-       
+        </> 
     )
 }
