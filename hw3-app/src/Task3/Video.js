@@ -9,6 +9,7 @@ export function VideoPlayer() {
    
 
     const playButton = () =>{
+      console.log(111)
         const video = videoRef.current;
     if (!isPlaying) {
       video.play();
@@ -17,8 +18,9 @@ export function VideoPlayer() {
     }
 
     const stopButton = () =>{
+      console.log(222)
         const video = videoRef.current;
-    if (isPlaying) {
+    if (!isPlaying) {
       video.pause();
     }
     setIsPlaying(!isPlaying);
