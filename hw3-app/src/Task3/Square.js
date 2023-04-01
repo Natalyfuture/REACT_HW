@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export const Square = () => {
-   const squareRef = React.useRef();
+   const squareRef = React.useRef(null);
 
-   React.useEffect(() => {
+   useEffect(() => {
     const timeOutId = setTimeout(() => {
         squareRef.current.style.transform = 'translateX(200px)';
     }, 2000)
+    
     return () => clearTimeout(timeOutId);
     
-    })
+    }, [])
 
     return (
         <>

@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
      {/*  <AlbumsClass />
-      <Albums /> */}
+      <Albums />  */}
       <Square />
       <VideoPlayer />
     </div>

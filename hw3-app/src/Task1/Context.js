@@ -17,7 +17,11 @@ export class DataProvider extends React.Component {
         newAlbums: albums.slice(),
         n : albums.length,
       }))
-      .catch(error => console.log(error));
+      .catch(error => {
+        if (!error.response.ok){
+          console.log(error)
+        }
+      })
     }
   
   handleDataUpdate = (data) => {

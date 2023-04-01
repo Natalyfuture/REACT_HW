@@ -4,11 +4,6 @@ import InputField  from '../Input';
 import { AlbumList } from './AlbumList'
 
 export class AlbumsClass extends React.Component { 
-
-  handleDataUpdate = (data) => {
-    const { handleDataUpdate } = this.context;
-    handleDataUpdate(data);
-  }
   
     render() {
       return(

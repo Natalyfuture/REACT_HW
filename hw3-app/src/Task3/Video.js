@@ -43,7 +43,7 @@ export function VideoPlayer() {
         <>
         <h3>PART2</h3>
         <div>
-          <video ref={videoRef} controls>
+          <video ref={videoRef} controls={false}>
           <source src={rose} type="video/mp4" />
           </video>
         </div>
