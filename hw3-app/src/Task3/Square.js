@@ -16,7 +16,7 @@ export const Square = () => {
         <>
             <h1>TASK3</h1>
             <h3>PART1</h3>
-            <div style={{width: '100px', height: '100px', backgroundColor: 'blue'}} ref={squareRef}></div>
+            <div style={{width: '100px', height: '100px', backgroundColor: 'blue', transition: 'transform 1s'}} ref={squareRef}></div>
         </>
         
     )

@@ -9,10 +9,13 @@ export default function InputField (props) {
     return res;
   }
 
-  const dataInput = (n) => {
+  const dataInput = () => {
     if (props.onDataUpdate) {
       const res = ref.current.value;
-      props.onDataUpdate(res);
+      props.onDataUpdate({
+        albums: props.albums.slice(0, res),
+        n: res
+      });
     }
   }
 

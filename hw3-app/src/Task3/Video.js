@@ -3,20 +3,24 @@ import rose from '../Video/rose.mp4'
 
 export function VideoPlayer() {
     const [currentTime, setCurrentTime] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(false);
     const videoRef = useRef();
+    let isPlaying = false;
    
 
-    const playButton = () =>{
-      const video = videoRef.current;
+    const playButton = (isPlaying) =>{
+      if(isPlaying){
+        const video = videoRef.current;
         video.play();
-      setIsPlaying(isPlaying);
+        isPlaying = true;
+      }
       }
 
-    const stopButton = () =>{
-      const video = videoRef.current;
+    const stopButton = (isPlaying) =>{
+      if(isPlaying){
+        const video = videoRef.current;
         video.pause();
-      setIsPlaying(!isPlaying);
+        isPlaying = false;
+      }
     }
 
     const updateTime = () => {
