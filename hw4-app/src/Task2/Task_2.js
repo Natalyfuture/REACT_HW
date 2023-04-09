@@ -10,6 +10,7 @@ export const Task_2 = () => {
             <h1>TASK 2</h1>
             <AlbumList url={ALBUMS_BASE_URL} />
             <UserList url={User_BASE_URL} />
+            <hr></hr>
         </div>
     )
 }

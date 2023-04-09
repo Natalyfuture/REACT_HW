@@ -2,7 +2,6 @@ import { Album } from './Album';
 import { withFetchingData } from './withFetchingData'
 
 const AlbumList = ({data: albums, isLoading, error }) => {
-    console.log(albums)
     return(
         <div>
             <h1>ALBUMS</h1>

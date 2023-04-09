@@ -2,7 +2,6 @@ import { User } from './User';
 import { withFetchingData } from './withFetchingData';
 
 const UserList = ({data: users, isLoading, error }) => {
-    console.log(users)
     return(
         <div>
             <h1>USERS</h1>
