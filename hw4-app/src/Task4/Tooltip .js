@@ -3,39 +3,30 @@ import ProductWithTooltip from './ProductWithTooltip';
 
 const Tooltip = ({renderTooltip, content}) => {
  
-    const [isTooltipShown, setIsTooltipShown] = useState(true);
+    const [isTooltipShow, setIsTooltipShow] = useState(false);
+    const [position, setPosition] = useState({tooltipX: 0, tooltipY: 0});
 
     const toggleTooltip = () => {
-        setIsTooltipShown(!isTooltipShown);
-        console.log(isTooltipShown)
+        setIsTooltipShow(!isTooltipShow);
+        console.log(isTooltipShow)
     }
-
-    const MouseTracker = ( {render} ) => {
-      const [tooltipX, setTooltipX] = useState(0);
-      const [tooltipY, setTooltipY] = useState(0);
     
+    const MouseTracker = () =>{
       const handleMouseMove = (event) => {
         console.log(event.clientX)
-        return (
-          setTooltipX( event.clientX),
-          setTooltipY(event.clientY)
-        )
-       
-      };
-    
-        return(
-          <div className={'container'} onMouseMove={handleMouseMove}>
-           {render(tooltipX, tooltipY)}
-          </div>
-        )
-    };
+          setPosition( {tooltipX: event.clientX, tooltipY: event.clientY})
+      }
+      <div className={'container'} onMouseMove={handleMouseMove}>
+          <ProductWithTooltip mouse={position} name={content.name} price={content.price} rating={content.rating} />
+         </div>
+    }
 
     return (
         <div onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip}>
           {renderTooltip(toggleTooltip, MouseTracker)}
-          {isTooltipShown && (
-            <MouseTracker render={(tooltipX, tooltipY) => <ProductWithTooltip tooltipX={tooltipX} tooltipY={tooltipY} name={content.name} price={content.price} rating={content.rating}/>} />
-          )}
+          {isTooltipShow && (<MouseTracker />)
+            
+          }
         </div>
       );
     };
