@@ -1,27 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Tooltip from './Tooltip ';
-import ProductWithTooltip from './ProductWithTooltip';
+import '../App.css'
 
-
-
-export const ProductCard = ({name, description, image, category, price, rating, isTooltipShow}) => {
-    const content = { name, price, rating };
-
-    const MouseTracker = ({render}) =>{
-        const [position, setPosition] = useState({x: 0, y: 0});
-       
-        const handleMouseMove = (event) => {
-          setPosition( {x: event.clientX, y: event.clientY})
-            
-        }
-      console.log(position)
-        return(
-          <div className='container' onMouseMove={handleMouseMove}>
-          {render(position)}
-         </div>
-        )
-         
-      };
+export const ProductCard = ({name, description, image, category, price, rating, isTooltipShow}) => {  
         return (
             <div className='product-card'>
                 <div className='product-img'>    
@@ -33,27 +14,25 @@ export const ProductCard = ({name, description, image, category, price, rating, 
                     </div>
                 </div>
                 
-                <Tooltip content = {content}
+                <Tooltip content = {
+                    <>
+                        <h3>{name}</h3>
+                        <p>{`Price: ${price}`}</p>
+                        <p>{`Rating: ${rating}`}</p>
+                    </>
+                }
                 
-                    renderTooltip={(toggleTooltip, handleMouseMove) => (  
-                    <div onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip} onMouseMove={handleMouseMove}>
-                       
-                        <MouseTracker render={(position) => (
-                            <>
+                   renderTooltip={(toggleTooltip, handleMouseMove) => (  
                              <img 
+                             className='img-things'
                          src={image}
                          alt={name} 
                          onMouseEnter={toggleTooltip} 
                          onMouseLeave={toggleTooltip} 
                          onMouseMove={handleMouseMove}
                          />
-                         (isTooltipShow && 
-                         <ProductWithTooltip mouse={ position } name={content.name} price={content.price} rating={content.rating} />)
-                            </>
-                        
-                        )} />
-                    </div>
                     )}
+                   
                 />   
             </div> 
         );

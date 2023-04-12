@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
-import ProductWithTooltip from './ProductWithTooltip';
-
-
-
 
 const Tooltip = ({renderTooltip, content}) => {
- 
-    const [isTooltipShow, setIsTooltipShow] = useState(false);
-   
 
-    const toggleTooltip = () =>  setIsTooltipShow(prev => !prev);
+  const [position, setPosition] = useState({x: 0, y: 0});
 
+  const [isTooltipShow, setIsTooltipShow] = useState(false);
+
+  const toggleTooltip = () =>  setIsTooltipShow(prev => !prev);
+
+  const handleMouseMove = (event) => {
+    setPosition( {x: event.clientX, y: event.clientY})
+    console.log(position)
+        
+  }
     
     return (
-      <div onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip}>
-        {renderTooltip(toggleTooltip)}
-      </div>
-)}  
+      <>
+      {renderTooltip(toggleTooltip, handleMouseMove)}
+      {isTooltipShow && (
+        <div className='content' style={{left: position.x , top: position.y }}> 
+            {content}
+        </div>)
+      
+    }
+      </>
+      
+        
+    ) 
+}  
 export default Tooltip

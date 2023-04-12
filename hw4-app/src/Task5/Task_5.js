@@ -5,7 +5,7 @@ import { UserList } from './userList';
 
 export const Task_5 = () => {
     return(
-        <div>
+        <div className='wrapper'>
             <h1>TASK 5</h1>
             <User />
             <Album1 />

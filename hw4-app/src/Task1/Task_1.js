@@ -2,11 +2,12 @@ import User from './User';
 import { userData }  from './Data/UserData';
 import { albumData } from './Data/AlbumData';
 import  Album  from './Album';
+import '../App.css'
 
 export const Task_1 = () => {
 
     return userData.name && (
-        <div>
+        <div className='wrapper'>
         <User 
         name={userData.name}
         email={userData.email}

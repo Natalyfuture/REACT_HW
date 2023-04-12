@@ -9,7 +9,7 @@ export const ProductList = () => {
     const CLOTHE_BASE_URL = 'https://fakestoreapi.com/products';
 
     useEffect(() => { 
-        fetch(CLOTHE_BASE_URL)
+        fetch(COFFEE_BASE_URL)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Something went wrong!');
