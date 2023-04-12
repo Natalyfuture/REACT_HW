@@ -6,7 +6,7 @@ const ProductWithTooltip = ({ mouse, name, price, rating}) => {
   console.log(name, price, rating)
 
     return(
-      <div className='content' style={{position: 'zIndex: 2;',  left: mouse.x , top: mouse.y}}> 
+      <div className='content' style={{left: mouse.x , top: mouse.y}}> 
         <h3>{name}</h3>
         <p>{`Price: ${price}`}</p>
         <p>{`Rating: ${rating}`}</p>
