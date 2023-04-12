@@ -1,5 +1,5 @@
-export const User = ({id, name, email, street, suite, city, phone, companyName }) => {
-    console.log(street, suite, city)
+export const User1 = ({id, name, email, street, suite, city, phone, companyName }) => {
+    
     return(
         <div>
             <h3>{name} ({email}) :</h3>

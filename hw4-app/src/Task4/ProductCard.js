@@ -1,9 +1,12 @@
 import React from 'react';
-import Tooltip  from './Tooltip ';
+import Tooltip, {MouseTracker } from './Tooltip ';
 
 
-export const ProductCard = ({id, name, description, image, category, price, rating}) => {
+
+export const ProductCard = ({name, description, image, category, price, rating}) => {
     const content = { name, price, rating };
+
+   
 
         return (
             <div className='product-card'>
@@ -14,25 +17,27 @@ export const ProductCard = ({id, name, description, image, category, price, rati
                         <p>{category}</p>
                     </div>
                 </div>
+                
                 <Tooltip content = {content}
-                    renderTooltip={(toggleTooltip, handleMouseMove) => (
-                       
+                
+                    renderTooltip={(toggleTooltip, handleMouseMove) => (   
                     <div onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip} onMouseMove={handleMouseMove}>
-                        <img 
-                        src={image}
-                        alt={name} 
-                        onMouseMove={handleMouseMove} 
-                        onMouseEnter={toggleTooltip} 
-                        onMouseLeave={toggleTooltip}
-                        />
+                        <MouseTracker render={(position) => (
+                                    <img 
+                                    src={image}
+                                    alt={name} 
+                                    onMouseEnter={toggleTooltip} 
+                                    onMouseLeave={toggleTooltip}
+                                    onMouseMove={handleMouseMove}
+                                    />
+                        )} />
                     </div>
                     )}
-                   
-                />
-               
-            </div>
+                />   
+            </div> 
         );
 }
+
 
     
            

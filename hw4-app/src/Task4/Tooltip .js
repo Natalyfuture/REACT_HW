@@ -1,34 +1,40 @@
 import React, { useState } from 'react';
 import ProductWithTooltip from './ProductWithTooltip';
 
+
+export const MouseTracker = ({render}) =>{
+  const [position, setPosition] = useState({x: 0, y: 0});
+ 
+  const handleMouseMove = (event) => {
+    setPosition( {x: event.clientX, y: event.clientY})
+      
+  }
+console.log(position)
+  return(
+    <div className='container' onMouseMove={handleMouseMove}>
+    {render(position)}
+   </div>
+  )
+   
+};
+
 const Tooltip = ({renderTooltip, content}) => {
  
     const [isTooltipShow, setIsTooltipShow] = useState(false);
-    const [position, setPosition] = useState({tooltipX: 0, tooltipY: 0});
+   
 
-    const toggleTooltip = () => {
-        setIsTooltipShow(!isTooltipShow);
-        console.log(isTooltipShow)
-    }
-    
-    const MouseTracker = () =>{
-      const handleMouseMove = (event) => {
-        console.log(event.clientX)
-          setPosition( {tooltipX: event.clientX, tooltipY: event.clientY})
-      }
-      <div className={'container'} onMouseMove={handleMouseMove}>
-          <ProductWithTooltip mouse={position} name={content.name} price={content.price} rating={content.rating} />
-         </div>
-    }
+    const toggleTooltip = () =>  setIsTooltipShow(prev => !prev);
 
+   
     return (
-        <div onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip}>
-          {renderTooltip(toggleTooltip, MouseTracker)}
-          {isTooltipShow && (<MouseTracker />)
-            
-          }
-        </div>
-      );
-    };
-    
-    export default Tooltip;
+      <div onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip}>
+        {renderTooltip(toggleTooltip)}
+      
+        {isTooltipShow && (
+        <MouseTracker 
+          render={(position) => 
+          (<ProductWithTooltip mouse={{ position }} name={content.name} price={content.price} rating={content.rating} />)} 
+        />)}
+      </div>
+)}  
+export default Tooltip

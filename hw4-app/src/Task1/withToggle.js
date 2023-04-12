@@ -5,7 +5,7 @@ export const withToggle = (WrappedComponent) => {
         const [toggled, setToggled] = useState(false);
 
         const changeToggle = () => {
-            setToggled(!toggled)
+            setToggled(prev => !prev)
         }
 
     return <WrappedComponent {...props} toggled={toggled} changeToggle={changeToggle} />
