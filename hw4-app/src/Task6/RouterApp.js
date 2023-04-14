@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
-import { Routes, Route, Link, useParams, Outlet, useNavigate } from 'react-router-dom';
+import { Routes, Route, Link, useParams, Outlet, useNavigate} from 'react-router-dom';
+
 import '../App.css'
 
 import { Task_4 } from '../Task4/Task_4';
@@ -78,6 +79,19 @@ const TaskDescriptionId = () => {
   return componentToRender;   
 }
 
+const GoBackButton = () =>{
+    const navigate = useNavigate();
+    const handleButton = () => {
+        navigate(-1)
+    }
+    return(
+        <button className='button-arrow' onClick={handleButton}>
+            {<img src={arrow} className='arrow'/>}
+        </button>
+    )
+}
+ 
+
 export default class RouterApp extends Component {
     render() {
         return <div>
@@ -100,7 +114,7 @@ export default class RouterApp extends Component {
                 <div className='header-link'>
                     <Link to="/description">TaskDescription</Link>
                 </div>
-                <button className='button-arrow' onClick={() => window.history.back()}>{<img src={arrow} className='arrow'/>}</button>
+               <GoBackButton />
                 
             </div>
             <Routes>
