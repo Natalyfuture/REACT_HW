@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { Routes, Route, Link, useParams, Outlet, useNavigate} from 'react-router-dom';
+import { Routes, Route, NavLink, useParams, Outlet, useNavigate} from 'react-router-dom';
 
 import '../App.css'
 
@@ -19,12 +19,12 @@ import arrow from './arrow.svg'
 
 const TaskDescription = () =>{
     return <div>
-        <div><Link to='/description/task1'>Task #1 - Toggler HOC</Link></div>
-        <div><Link to='/description/task2'>Task #2 - Fetching Data HOC</Link></div>
-        <div><Link to='/description/task3'>Task #3 - render-props</Link></div>
-        <div><Link to='/description/task4'>Task #4: - Tooltip</Link></div>
-        <div><Link to='/description/task5'>Task #5 - custom hooks</Link></div>
-        <div><Link to='/description/task6'>Task #6 - React Router</Link></div>
+        <div><NavLink to='/description/task1' activeClassName="active">Task #1 - Toggler HOC</NavLink></div>
+        <div><NavLink to='/description/task2' activeClassName="active">Task #2 - Fetching Data HOC</NavLink></div>
+        <div><NavLink to='/description/task3' activeClassName="active">Task #3 - render-props</NavLink></div>
+        <div><NavLink to='/description/task4' activeClassName="active">Task #4: - Tooltip</NavLink></div>
+        <div><NavLink to='/description/task5' activeClassName="active">Task #5 - custom hooks</NavLink></div>
+        <div><NavLink to='/description/task6' activeClassName="active">Task #6 - React Router</NavLink></div>
         <Outlet />
     </div>
     
@@ -97,22 +97,22 @@ export default class RouterApp extends Component {
         return <div>
             <div className='router-wrapper'>
                 <div className='header-link'>
-                    <Link to="/">Main</Link>
+                    <NavLink to="/" activeClassName="active">Main</NavLink>
                 </div>
                 <div className='header-link'>
-                    <Link to="/task1">Task_1 </Link>
+                    <NavLink to="/task1" activeClassName="active">Task_1 </NavLink>
                 </div>  
                 <div className='header-link'>
-                    <Link to="/task2">Task_2</Link>
+                    <NavLink to="/task2" activeClassName="active">Task_2</NavLink>
                 </div>
                 <div className='header-link'>
-                    <Link to="/task3">Task_3</Link>
+                    <NavLink to="/task3" activeClassName="active">Task_3</NavLink>
                 </div>
                 <div className='header-link'>
-                    <Link to="/task5">Task_5</Link>
+                    <NavLink to="/task5" activeClassName="active">Task_5</NavLink>
                 </div>
                 <div className='header-link'>
-                    <Link to="/description">TaskDescription</Link>
+                    <NavLink to="/description" activeClassName="active">TaskDescription</NavLink>
                 </div>
                <GoBackButton />
                 
