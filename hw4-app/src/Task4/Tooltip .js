@@ -9,23 +9,19 @@ const Tooltip = ({renderTooltip, content}) => {
   const toggleTooltip = () =>  setIsTooltipShow(prev => !prev);
 
   const handleMouseMove = (event) => {
-    setPosition( {x: event.clientX, y: event.clientY})
-    console.log(position)
-        
+    setPosition( {x: event.clientX, y: event.clientY})     
   }
     
-    return (
-      <>
+  return (
+    <>
       {renderTooltip(toggleTooltip, handleMouseMove)}
       {isTooltipShow && (
         <div className='content' style={{left: position.x , top: position.y }}> 
             {content}
         </div>)
       
-    }
-      </>
-      
-        
-    ) 
+      }
+    </>  
+  ) 
 }  
 export default Tooltip

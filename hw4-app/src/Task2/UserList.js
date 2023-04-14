@@ -22,7 +22,6 @@ const UserList = ({data: users, isLoading, error }) => {
                 />
             ))}
         </div>
-
     )
 }
 export default withFetchingData(UserList)

@@ -16,7 +16,6 @@ const Album = ({title, url, toggled, changeToggle }) => {
                 <button onClick= {changeToggle}>
                     {toggled ? <img className="img-like" src={like} alt="like" /> :  <img className="img-like" src={unlike} alt="unlike" />}
                 </button>
-
             </div>  
         )  
    

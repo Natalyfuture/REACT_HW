@@ -1,5 +1,4 @@
 export const User = ({id, name, email, street, suite, city, phone, companyName }) => {
-    console.log(street, suite, city)
     return(
         <div>
             <h3>{name} ({email}) :</h3>

@@ -50,8 +50,8 @@
 
 .content{
   position: absolute;
-  width: 250px;
-  height: 100px;
+  width: 200px;
+  height: 150px;
   background-color: aliceblue;
   border-radius: 8px;
   box-shadow: 1px 2px 2px gray;
@@ -67,13 +67,40 @@
   margin-left: 250px;
 }
 
+.button-arrow{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #99f5a0;
+}
+
 .arrow{
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
+  width: 30px;
+  height: 30px;
+  
  
 }
 
 .wrapper{
   text-align: center;
+}
+
+.router-wrapper{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.header-link{
+  margin-right: 25px;
+}
+
+
+.task{
+  margin-top: 25px;
+  width: 1000px;
+}
+
+.post-li{
+  list-style-type: none;
 }

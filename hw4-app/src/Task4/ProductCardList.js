@@ -26,8 +26,8 @@ export const ProductList = () => {
  
      return(
         <div>
-            {productsList.map(({ id, title, description, image, category, price, rating }) => <ProductCard  key={id} 
-                    name={title} 
+            {productsList.map(({ id, name, description, image, category, price, rating }) => <ProductCard  key={id} 
+                    name={name} 
                     description={description} 
                     image={image} 
                     category={category} 

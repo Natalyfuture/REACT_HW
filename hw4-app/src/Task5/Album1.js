@@ -4,7 +4,6 @@ import  like  from '../Task1/Img/like.png';
 import  unlike  from '../Task1/Img/unlike.png';
 
 export const Album1 = () => {
-    console.log(albumData)
     const { title, url} = albumData
     const {toggled, changeToggler} = useToggler(false)
     return(

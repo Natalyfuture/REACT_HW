@@ -4,8 +4,7 @@ import {  Post } from './Post'
 export const Posts = ({posts}) => {
 return(
     <ul>
-         {posts.map((post) => <Post post={post} />)}
+        {posts.map((post) => <Post post={post} />)}
     </ul>
-   
 )
 }
