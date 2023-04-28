@@ -24,17 +24,19 @@ const Sides = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 1.5s easy;
     backface-visibility: hidden;
     border-radius: 10px;
+    perspective: 800px;
 `;
 
 const Front = styled(Sides)`
     transform: ${({ isFlipped }) => (isFlipped ? "rotateY(180deg)" : "none")};
+    transition: transform 0.6s ease-out;
 `;
 
 const Back = styled(Sides)`
     transform: ${({ isFlipped }) => (isFlipped ? "rotateY(180deg)" : "none")};
+    transition: transform 0.6s ease-out;
 `;
 
 const CardContainer = styled.div`

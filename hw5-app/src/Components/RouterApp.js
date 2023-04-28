@@ -3,8 +3,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import arrow from '../Images/arrow.png'
 import '../index.css'
 
-import { YourCards } from './YourCards';
-import { CardForm } from './CardForm';
+import  {YourCards}  from './YourCards';
+import {CardForm} from './CardForm';
 
  const GoBackButton = () =>{
     const navigate = useNavigate();

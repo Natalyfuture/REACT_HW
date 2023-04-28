@@ -1,10 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef} from 'react';
 import  styled from 'styled-components';
-import { CreateCardFace } from './CreateCard';
 import visaFace from '../Images/Visa_face.jpg';
 import mastercardFace from '../Images/Mastercard_face.jpg';
 import visa from '../Images/LogoVisa.png';
 import mastercard  from '../Images/Mastercard.png';
+import { useNavigate } from 'react-router-dom';
+import { YourCards } from './YourCards';
 
 const Container = styled.div`
     margin: 0 auto;
@@ -131,7 +132,7 @@ const Input = styled.input`
     border-radius: 25px;
     margin-bottom: 61px;
     font-size: 22px;
-    padding-left: 15px;
+    padding-left: 25px; 
 `;
 
 const FormSubmitted = styled.div`
@@ -172,53 +173,106 @@ const BackgroundWrapper = styled.div`
   z=_index: -2;
   `;
 
-    export const CardForm = () => {
+export const CardForm = ({}) => {
+ 
 
       const [numberCard, setNumberCard] = useState('');
-      const [cvv, setСvv] = useState('');
+      const [cvv, setCvv] = useState('');
       const [fullName, setFullName] = useState('');
       const [logo, setLogo] = useState('');
       const [isValid, setIsValid] = useState(true);
       const [errors, setErrors] = useState({});
       const [isSubmitted, setIsSubmitted] = useState(false);
+      const [newCard, setNewCard] = useState([]);
+      const [dataList, setDataList] = useState([]);
+      const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+      
+ 
+      const navigate = useNavigate();
 
       const formData = {
-          numberCard,
-          cvv,
           fullName,
+          numberCard,  
+          cvv,
           logo,
         };
 
-   
+        
+        const addCard = (formData) => {
+          const newCardData = {
+            numberCard: formData.numberCard,
+            cvv: formData.cvv,
+            logo: formData.logo,
+          };
+          return newCardData
+        };
+      
+      useEffect(() =>{
+        console.log(newCard)
+       
+      }, [newCard])
+       
+      
       const handleSubmit = (event) => {
         event.preventDefault();
-       
-           fetch('https://my.api.mockaroo.com/cards/123.json?key=778301b0', {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
-            })
-            .then((data) => {
-                console.log(data);
+
+        const newCardData = addCard(formData)
+        setNewCard(prev => [
+          ...prev,
+          {
+            user_id: 1,
+            user_name: formData.fullName,
+            data: [newCardData]
+          }
+        ])
+
+          if(!numberCard || !cvv || !fullName || !logo) {
+            setIsButtonDisabled(true);
+          }
+
+          if(!isButtonDisabled){
+            console.log(111)
+            console.log("newCard before fetch", newCard)
+            
+            
+              return fetch('https://my.api.mockaroo.com/cards/123.json?key=778301b0', {
+                method: 'POST',
+                body: JSON.stringify(newCard),
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              })
+              .then((response) => {
+                console.log("response:", response);
+                
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.json(); 
+              })
+              .catch((error) => {
+                console.error('Error in first then block:', error);
+              })
+              .then((data) => {
+                console.log(data)
+                const state = newCard
+                console.log(data)
+                navigate('/',  {state: state});
+                console.log(222)
                 setIsSubmitted(true);
                 setNumberCard('');
-                setСvv('');
+                setCvv('');
                 setFullName('');
                 setLogo('');
-            })
-            .catch((error) => {
-              console.error('Error:', error);
-            });
-            console.log(111)
-      };
+                console.log(333)
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+             
+          }    
+        };
+      
     
       useEffect(() => {
         const regex = /^\d(?:\d{11}|\d{15})$/
@@ -234,22 +288,12 @@ const BackgroundWrapper = styled.div`
       
       const handleInputNumberCard = (event) => {
         const inputNumber = event.target.value;
-        if (!inputNumber.trim()) {
-            return;
-          }
-        
           setNumberCard(inputNumber);
-
       };
 
       const handleInputCvv = (event) => {
         const inputCvv = event.target.value;
-
-        if (!inputCvv.trim()) {
-          return;
-        }
-      
-        setСvv(inputCvv);
+        setCvv(inputCvv);
       };
 
       const handleFullName = (event) => {
@@ -264,15 +308,11 @@ const BackgroundWrapper = styled.div`
       
       const handleLogo = (event) => {
         const inputLogo = event.target.value;
-
-        if (!inputLogo.trim()) {
-          return;
-        }
-      
         setLogo(inputLogo);
       };
       
       const cardType = logo;
+
     return(
         <Container>
             <Title>Create a new card</Title>
@@ -294,22 +334,14 @@ const BackgroundWrapper = styled.div`
                               </DopWrapper>
                                 <LogoIconNewCard  
                                     src={cardType === 'visa' ? visa : mastercard} 
-                                    style={{width: `${cardType=== 'visa' ? '100%' : '60%'}`, height: `${cardType=== 'visa' ? '100%' : '50%'}`}}>
-                                     
+                                    style={{width: `${cardType=== 'visa' ? '100%' : '60%'}`, height: `${cardType=== 'visa' ? '100%' : '50%'}`}}>   
                                 </LogoIconNewCard> 
                             </>)
-                              
                             }    
                         </LogoNewCard>
                     </WrapperContentNewCard>
                 </DataWrapperNewCard>
                 </ContainerNewCard>
-            {isSubmitted ? (
-                <FormSubmitted>
-                    <TextFormSubmitted>Form submitted successfully!</TextFormSubmitted>
-                    <Button onClick={() => setIsSubmitted(false)}>Submit another form</Button>
-                </FormSubmitted>
-                ) :(
                 <FormContainer onSubmit={handleSubmit}>
                     <WrapperInputNumber>
                         <Label>Card number
@@ -329,9 +361,10 @@ const BackgroundWrapper = styled.div`
                     <Label >VISA or MASTERCARD
                         <Input type="text" value={logo} onChange={handleLogo} required></Input>
                     </Label>
-                    <Button type={'submit'}>Add card</Button>
+                    <Button type={'submit'} disabled={isButtonDisabled}>Add card</Button>
             </FormContainer>
-            )}
         </Container>
     )
 }
+
+
