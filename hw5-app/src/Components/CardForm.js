@@ -173,9 +173,9 @@ const BackgroundWrapper = styled.div`
   z=_index: -2;
   `;
 
-export const CardForm = ({}) => {
+export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
+  console.log(newCard)
  
-
       const [numberCard, setNumberCard] = useState('');
       const [cvv, setCvv] = useState('');
       const [fullName, setFullName] = useState('');
@@ -183,9 +183,7 @@ export const CardForm = ({}) => {
       const [isValid, setIsValid] = useState(true);
       const [errors, setErrors] = useState({});
       const [isSubmitted, setIsSubmitted] = useState(false);
-      const [newCard, setNewCard] = useState([]);
       const [dataList, setDataList] = useState([]);
-      const [isButtonDisabled, setIsButtonDisabled] = useState(false);
       
  
       const navigate = useNavigate();
@@ -197,41 +195,45 @@ export const CardForm = ({}) => {
           logo,
         };
 
-        
-        const addCard = (formData) => {
+        const date = new Date();
+        const creatingNewCardData = (formData) => {
           const newCardData = {
-            numberCard: formData.numberCard,
-            cvv: formData.cvv,
-            logo: formData.logo,
-          };
-          return newCardData
+              data: {
+                  id: 1,
+                 card: {
+                     numbers: formData.numberCard,
+                     type: formData.logo,
+                     expiry_date: `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`,
+                     cvv: 293
+                     },
+                 statistic: Array(0),
+          }
+        }
+        return newCardData
         };
       
       useEffect(() =>{
         console.log(newCard)
+      }, [newCard]);
+
+
        
-      }, [newCard])
-       
-      
       const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(777)
 
-        const newCardData = addCard(formData)
-        setNewCard(prev => [
-          ...prev,
-          {
-            user_id: 1,
+
+        newCard = {
+          user_id: 1,
             user_name: formData.fullName,
-            data: [newCardData]
-          }
-        ])
+            data: [{creatingNewCardData}]
+        };
+        console.log(newCard)
 
-          if(!numberCard || !cvv || !fullName || !logo) {
-            setIsButtonDisabled(true);
-          }
+        addNewCard(newCard);
 
-          if(!isButtonDisabled){
-            console.log(111)
+          if(handleValidForm){
+           
             console.log("newCard before fetch", newCard)
             
             
@@ -256,8 +258,8 @@ export const CardForm = ({}) => {
               .then((data) => {
                 console.log(data)
                 const state = newCard
-                console.log(data)
-                navigate('/',  {state: state});
+                console.log(state)
+                navigate('/');
                 console.log(222)
                 setIsSubmitted(true);
                 setNumberCard('');
@@ -271,46 +273,86 @@ export const CardForm = ({}) => {
               });
              
           }    
-        };
+      };
+
+      const handleValidForm = (numberCard, cvv, fullName, logo) => {
+        return(
+          isNumberCardValid(numberCard) &&
+          isCvvValid(cvv) &&
+          isFullNameValid(fullName) &&
+          isLogoValid(logo)
+        );
+      }
+  
+
+    /*   useEffect(() => {
+       const regex = /^\d(?:\d{11}|\d{15})$/
       
-    
-      useEffect(() => {
-        const regex = /^\d(?:\d{11}|\d{15})$/
-      
-        if (regex.test(numberCard)) {
-          setIsValid(true);
-          setErrors({});
-        } else {
-          setIsValid(false);
-          setErrors({number: 'Enter valid number'});
-        }
-      }, [numberCard]);
-      
+       if (regex.test(numberCard)) {
+         setErrors({});
+         console.log("Number is valid");
+       } else {
+         setErrors({number: 'Enter valid number'});
+          console.log(errors)
+         console.log("Number is not valid");
+       }
+      }, [numberCard]); */
+       
       const handleInputNumberCard = (event) => {
         const inputNumber = event.target.value;
-          setNumberCard(inputNumber);
+        setNumberCard(inputNumber);   
       };
+
+      const isNumberCardValid = (numberCard) => {
+        const regex = /^\d(?:\d{11}|\d{16})$/;
+        if (regex.test(numberCard)) {
+          setErrors({});
+          console.log("Number is valid");
+        } else {
+          setErrors({number: 'Enter valid number'});
+           console.log(errors)
+          console.log("Number is not valid");
+        }
+        return regex.test(numberCard);
+      };
+
 
       const handleInputCvv = (event) => {
         const inputCvv = event.target.value;
+        console.log(inputCvv.length);
         setCvv(inputCvv);
+        console.log(isCvvValid)
+      };
+
+      const isCvvValid = (cvv) => {
+        return cvv.length === 3;
+      };
+
+      const capitalizeWords = (str) => {
+        return str.toLowerCase().replace(/(^|\s)\S/g, (letter) => {
+          return letter.toUpperCase();
+        });
       };
 
       const handleFullName = (event) => {
         const inputFullName = event.target.value;
+        const capitalizedFullName = capitalizeWords(inputFullName);
+        setFullName(capitalizedFullName);
+        
+      };
+      const isFullNameValid = (capitalizedFullName) => {
+        return capitalizedFullName.trim() !== '';
+      };
 
-        if (!inputFullName.trim()) {
-          return;
-        }
-      
-        setFullName(inputFullName);
-      };
-      
       const handleLogo = (event) => {
-        const inputLogo = event.target.value;
+        const inputLogo = event.target.value.trim();
+        console.log(inputLogo)
         setLogo(inputLogo);
+      }
+      const isLogoValid = (logo) => {
+        return logo === 'visa' || logo === 'mastercard';
       };
-      
+
       const cardType = logo;
 
     return(
@@ -361,10 +403,8 @@ export const CardForm = ({}) => {
                     <Label >VISA or MASTERCARD
                         <Input type="text" value={logo} onChange={handleLogo} required></Input>
                     </Label>
-                    <Button type={'submit'} disabled={isButtonDisabled}>Add card</Button>
+                    <Button type={'submit'} disabled={!handleValidForm}>Add card</Button>
             </FormContainer>
         </Container>
     )
 }
-
-

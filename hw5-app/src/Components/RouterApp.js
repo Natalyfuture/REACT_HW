@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState,  useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import arrow from '../Images/arrow.png'
 import '../index.css'
@@ -33,9 +33,32 @@ const TransitionToForm = () => {
     )
 }
  
-export default class RouterApp extends Component {
-    
-    render () {
+export const RouterApp = () => {
+
+    const [newCard, setNewCard] = useState([]);
+    const [cards, setCards] = useState([]);
+
+    const addNewCard = (newCard) => {
+        setCards((prev) => [...prev, newCard]);
+    }
+
+    useEffect(() => {
+        fetch('https://my.api.mockaroo.com/cards/123.json?key=778301b0')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Something went wrong!');
+                }
+                return response.json()
+            })
+            .then(res => {
+                setCards([res]);
+                console.log([res])
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, [])
+
         return(
             <div className='base-wrapper'>
                 <div className='router-wrapper'>
@@ -43,11 +66,11 @@ export default class RouterApp extends Component {
                 <GoBackButton />
                 </div>
                 <Routes>
-                    <Route path='/' element={<YourCards/>} />
-                    <Route path='/card-form' element={<CardForm />} />
+                    <Route path='/' element={<YourCards cards={cards}/>} />
+                    <Route path='/card-form' element={<CardForm  setNewCard={setNewCard} newCard={newCard} addNewCard={addNewCard}/>} />
                 </Routes>
             </div>
         )
-    }
+    
 }
 
