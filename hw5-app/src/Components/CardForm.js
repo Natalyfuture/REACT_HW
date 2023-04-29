@@ -195,20 +195,21 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
           logo,
         };
 
-        const date = new Date();
         const creatingNewCardData = (formData) => {
+          const currentData = new Date().toLocaleDateString()
+          
           const newCardData = {
-              data: {
                   id: 1,
                  card: {
                      numbers: formData.numberCard,
                      type: formData.logo,
-                     expiry_date: `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`,
+                     expiry_date: currentData,
                      cvv: 293
                      },
                  statistic: Array(0),
-          }
+         
         }
+        console.log(newCardData)
         return newCardData
         };
       
@@ -220,13 +221,13 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
        
       const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(777)
 
-
+        const data = creatingNewCardData(formData);
         newCard = {
           user_id: 1,
-            user_name: formData.fullName,
-            data: [{creatingNewCardData}]
+          user_name: formData.fullName,
+          data: [data],
+          id: 123,
         };
         console.log(newCard)
 

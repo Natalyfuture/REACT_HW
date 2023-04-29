@@ -39,7 +39,8 @@ export const RouterApp = () => {
     const [cards, setCards] = useState([]);
 
     const addNewCard = (newCard) => {
-        setCards((prev) => [...prev, newCard]);
+        console.log(newCard)
+        setCards((prev) => [newCard, ...prev]);
     }
 
     useEffect(() => {
