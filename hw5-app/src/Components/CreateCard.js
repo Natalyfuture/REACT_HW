@@ -144,22 +144,15 @@ const StatWrapper = styled.div`
     position: relative; 
 `;
 
-const StatData = styled.div`
-    width: 410px;
-    height: 200px;
-    background: #232343;
-    border-radius: 30px;
-    position: absolute;
-`;
-
 const StatsList = styled.div`
     width: 410px;
     height: 500px;
+    padding-top: 50px;
     background: white;
     position: absolute;
-    top: 193px;
-    left:3px;
-    z-index: 100;
+    top: 270px;
+    left: 100px;
+    z-index: -2;
     
 `;
 
@@ -236,15 +229,12 @@ const StatsContext = styled.p`
     const Statistics = (dataStatistic, logo) => {
         return(
             <StatWrapper>
-                <StatData style={{top: `${logo === 'visa' ? '120px' : '95px'}`, left: `${visa === 'visa' ? '140px' : '85px'}`}}>
                     <StatsList>
                         <Title>Card stats</Title>
                         {dataStatistic.dataStatistic.map((item) => (
                         <StatsContext key={item.id}>{item.date}----{item.place}----{item.expense} {item.currency}</StatsContext>
                         ))}
                     </StatsList>
-                </StatData>
-                
             </StatWrapper>
         )
     }  
@@ -263,7 +253,6 @@ const StatsContext = styled.p`
             }
                 return groups.join(' ');
                 
-            
         }
 
         const updateCardNumber= handleCardNumber(numberCard)

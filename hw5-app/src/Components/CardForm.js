@@ -180,6 +180,7 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
       const [cvv, setCvv] = useState('');
       const [fullName, setFullName] = useState('');
       const [logo, setLogo] = useState('');
+      const [isNumberCardValid, setIsNumberCardValid] = useState(false)
       const [isValid, setIsValid] = useState(true);
       const [errors, setErrors] = useState({});
       const [isSubmitted, setIsSubmitted] = useState(false);
@@ -229,11 +230,11 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
           data: [data],
           id: 123,
         };
-        console.log(newCard)
 
         addNewCard(newCard);
+        console.log(handleValidForm)
 
-          if(handleValidForm){
+          if(currentValidForm){
            
             console.log("newCard before fetch", newCard)
             
@@ -261,13 +262,11 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
                 const state = newCard
                 console.log(state)
                 navigate('/');
-                console.log(222)
                 setIsSubmitted(true);
                 setNumberCard('');
                 setCvv('');
                 setFullName('');
                 setLogo('');
-                console.log(333)
               })
               .catch((error) => {
                 console.error('Error:', error);
@@ -276,47 +275,48 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
           }    
       };
 
-      const handleValidForm = (numberCard, cvv, fullName, logo) => {
+      const handleValidForm = (isNumberCardValid, cvv, fullName, logo) => {
         return(
-          isNumberCardValid(numberCard) &&
+          isNumberCardValid &&
           isCvvValid(cvv) &&
           isFullNameValid(fullName) &&
           isLogoValid(logo)
         );
       }
-  
 
-    /*   useEffect(() => {
+      useEffect(() => {
        const regex = /^\d(?:\d{11}|\d{15})$/
       
        if (regex.test(numberCard)) {
          setErrors({});
+         setIsNumberCardValid(true);
          console.log("Number is valid");
        } else {
          setErrors({number: 'Enter valid number'});
           console.log(errors)
          console.log("Number is not valid");
        }
-      }, [numberCard]); */
+      
+      }, [numberCard]);
+
+      const handleCardNumber = (numberCard) => {
+        const groups = [];
+        for(let i = 0; i < numberCard.length; i = i + 4){
+            groups.push(numberCard.slice(i, i + 4));
+        }
+            return groups.join(' ');
+            
+    }
        
       const handleInputNumberCard = (event) => {
         const inputNumber = event.target.value;
-        setNumberCard(inputNumber);   
+        setNumberCard(inputNumber); 
+       
       };
 
-      const isNumberCardValid = (numberCard) => {
-        const regex = /^\d(?:\d{11}|\d{16})$/;
-        if (regex.test(numberCard)) {
-          setErrors({});
-          console.log("Number is valid");
-        } else {
-          setErrors({number: 'Enter valid number'});
-           console.log(errors)
-          console.log("Number is not valid");
-        }
-        return regex.test(numberCard);
-      };
-
+     const currentInputCardNumber = handleCardNumber(numberCard)
+     
+     console.log(currentInputCardNumber)
 
       const handleInputCvv = (event) => {
         const inputCvv = event.target.value;
@@ -354,6 +354,9 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
         return logo === 'visa' || logo === 'mastercard';
       };
 
+      const currentValidForm = handleValidForm(isNumberCardValid, cvv, fullName, logo)
+      console.log(currentValidForm)
+
       const cardType = logo;
 
     return(
@@ -361,7 +364,7 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
             <Title>Create a new card</Title>
             <ContainerNewCard>
                 <DataWrapperNewCard>
-                    <NewCardCardNumber>{ formData.numberCard }</NewCardCardNumber>
+                    <NewCardCardNumber>{ currentInputCardNumber }</NewCardCardNumber>
                     <WrapperContentNewCard style={{marginLeft: `${cardType === 'visa' ? '95px' : '140px'}`}}>
                         <FullNameNewCard>{formData.fullName}</FullNameNewCard>
                         <LogoNewCard>
@@ -370,7 +373,7 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
                               <DopWrapper style={{top: `${cardType === 'visa' ? "-130px" : "-130px"}`, left: `${cardType=== 'visa' ? "-95px" : "-140px"}`}}>
                                 <BackgroundWrapper>
                                     <BackgroundCard 
-                                    src={cardType === 'visa' ? visaFace : mastercardFace}
+                                    src={cardType === 'visa' && currentValidForm ? visaFace : mastercardFace}
                                     style={{top: `${cardType === 'visa' ? "-220px" : "-195px"}`, left: `${cardType=== 'visa' ? "-213px" : "-305px"}`}}
                                     ></BackgroundCard>
                                   </BackgroundWrapper>
@@ -390,7 +393,7 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
                         <Label>Card number
                             <Input type="text" value={numberCard} onChange={handleInputNumberCard} required maxLength="16" ></Input>
                         </Label>
-                        {numberCard !=='' && !isValid && (
+                        {numberCard !=='' && !isNumberCardValid && (
                         <ErrorText key={'error-text'} >{errors.number}</ErrorText>
                         )}
                     </WrapperInputNumber>
