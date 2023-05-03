@@ -39,7 +39,6 @@ export const RouterApp = () => {
     const [cards, setCards] = useState([]);
 
     const addNewCard = (newCard) => {
-        console.log(newCard)
         setCards((prev) => [newCard, ...prev]);
     }
 
@@ -53,7 +52,6 @@ export const RouterApp = () => {
             })
             .then(res => {
                 setCards([res]);
-                console.log([res])
             })
             .catch((error) => {
                 console.error('Error:', error);

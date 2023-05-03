@@ -1,238 +1,242 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import  styled from 'styled-components';
-import visaFace from '../Images/Visa_face.jpg';
-import visaBack from '../Images/Visa_back.jpg';
-import mastercardBack from '../Images/Mastercard_back.jpg';
-import mastercardFace from '../Images/Mastercard_face.jpg';
+
+import visaFace from '../Images/VISA FRONT SIDE.png';
+import visaBack from '../Images/Mastercard.png';
+import mastercardBack from '../Images/MC BACK SIDE.png';
+import mastercardFace from '../Images/MC FRONT SIDE.png';
 import visa from '../Images/LogoVisa.png';
 import mastercard  from '../Images/Mastercard.png';
 import { CardOptions } from './CardOptions';
 
 
 const CardWrapper = styled.div`
-    margin-bottom: 170px; 
-    position: ${props => props.forForm ? 'absolute' : 'static'}
+    margin: 170px;
 `;
 
-
 const Sides = styled.div`
-    position: absolute;
+    position: relative;
     width: 540px;
     height: 340px;
-    left: 0;
-    top: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
     backface-visibility: hidden;
+    align-items: center;
     border-radius: 10px;
-    perspective: 800px;
+    perspective: 1200;
+    transition: transform 1.2s ease-out;
 `;
 
 const Front = styled(Sides)`
-    transform: ${({ isFlipped }) => (isFlipped ? "rotateY(180deg)" : "none")};
-    transition: transform 0.6s ease-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: ${props => props.isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)'};
+    
 `;
 
 const Back = styled(Sides)`
-    transform: ${({ isFlipped }) => (isFlipped ? "rotateY(180deg)" : "none")};
-    transition: transform 0.6s ease-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: ${props => props.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'};
 `;
 
 const CardContainer = styled.div`
-    position: relative;
-    width: 540px;
-    height: 250px;
+    width: 534px;
+    height: 334px;
     box-sizing: border-box;
-    border-radius: 20px;
-    overflow: hidden;
+    border-radius: 48px;
 `;
 
 const CardImage = styled.img`
-    width: ${props => props.visa ? '120%' : '270%'};
-    height: 150%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 48.6px;
-    position: absolute;
-    top: 25px;
-    left: ${props => props.back ? '25px' : '20px'};
 `;
 
 const Card = styled.div`
-    width: 354px;
-    height: 300px;
+    width: 534px;
+    height: 334px;
     border-radius: 48.6px;
     text-align: center;
+    margin-bottom: 200px;
 `;  
 const Wrapper = styled.div`
-    width:450px;
-    height: 300px;
     position: relative;
-    perspective: 1000px;
-`
+    width: 540px;
+    height: fit-content;
+    margin-bottom: 200px;
+`;
 
 const DataWrapper = styled.div`
-    width: 450px;
+    width: 500px;
     height: 80px;
     position: absolute;
     margin: 0 auto;
-    top: 70%;
-    left: 20%;
-    z-index: 3;
+    top: 50%;
+    left: 15%;
 `;
 
 const CardNumber = styled.div`
     display: block;
-    text-align: center;
+    text-align: left;
     color: white;
-    font-size: 16px;
+    font-size: 32px;
     transform: translateY(-50%);
 `; 
 
 const WrapperContent = styled.div`
     display: flex;
-    width: 240px;
+    width: 400px;
     justify-content: space-between;
     align-item: center;
 `;
 
  const FullName = styled.h3`
+    font-family: 'Abel';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    letter-spacing: 2.4px;
     color: white;
-    font-size: 12px;
-    letter-spacing: 1.2px;
-    
 `; 
  
 const Logo = styled.div`
-    width: 50px;
-    height: 45px;
+    margin-top: 15px;
+    width: 76px;
+    height: 60px;
     
 `; 
 
 const LogoIcon = styled.img`
-    width: 55px;
-    height: 45px;
+    width: 100%;
+    height: 100%;
 `;
 
 const BackWrapped = styled.div`
     position: absolute;
-    width: 250px;
+    width: 400px;
     height: 50px;
-    padding: 0 20px;
+    padding: 0 56px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    top: 70%;
-    left: 40%;
+    bottom: 70px;
+    left: 57px; 
 `;
 
 const DataValid = styled.p`
-    font-size: 16px;
+    font-family: 'Abel';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: 4.17391px;
     color: white;
-    text-align: left;
 `;
 
  const Cvv = styled.p`
-    font-size: 16px;
+    font-family: 'Abel';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: 4.17391px; 
     color: white;
-    text-align: right; 
 `; 
 
 const StatWrapper = styled.div`
-    width: 380px;
-    margin: 0 auto;  
-    position: relative; 
+    width: 525px;
+    margin: 0 auto; 
+    position: absolute;
+    top: 410px;
+    left: 7px;
+    transition: height 1s ease;
 `;
 
 const StatsList = styled.div`
-    width: 410px;
-    height: 500px;
-    padding-top: 50px;
+    width: 525px;
+    height: fit-content;
+    padding: 50px 25px 20px 25px;
+    box-sizing: border-box;
     background: white;
-    position: absolute;
-    top: 270px;
-    left: 100px;
-    z-index: -2;
-    
+    border-radius: 30px;
+   
 `;
 
 const Title = styled.p`
     font-family: 'Abel';
     font-style: normal;
-    font-weight: 500;
-    font-size: 22px;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 61px;
     letter-spacing: 2.4px;
     color: #000000;
     text-align: center;
 `;
 
 const StatsContext = styled.p`
-    text-align: center;
     font-family: 'Abel';
     font-style: normal;
-    font-size: 10px;
-    letter-spacing: 1.4px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    letter-spacing: 2.4px;
     color: #000000;
 `; 
 
-    export const CreateCardFace = ({numberCard,  fullName, logo, handleFlip, handleClick, showOptions, handleEyeOpen, eyeOpen, hiddenNumber, handleStatsClick}) => {
+    export const CreateCardFace = ({numberCard,  fullName, logo: cardType, handleFlip, handleClick, showOptions, handleEyeOpen, eyeOpen, hiddenNumber, handleStatsClick}) => {
 
-        const cardType = logo;
-       
         return(
             <CardWrapper onClick={handleClick} >
-                <Front>
                 <CardContainer >
                     <Card cardType={cardType}>
-                    <CardImage style={{width: `${cardType === 'visa' ? '120%' : '130%'}`}} src={cardType === 'visa' ? visaFace : mastercardFace} />
+                    <CardImage src={cardType === 'visa' ? visaFace : mastercardFace} />
                     </Card>   
                     <DataWrapper>
                         <CardNumber>{eyeOpen ? numberCard : hiddenNumber}</CardNumber>
-                        <WrapperContent style={{marginLeft: `${cardType === 'visa' ? '95px' : '140px'}`}}>
+                        <WrapperContent>
                             <FullName>{fullName}</FullName>
                             <Logo>
-                                <LogoIcon src={logo === 'visa' ? visa : mastercard} style={{width: `${cardType=== 'visa' ? '100%' : '60%'}`, height: `${cardType=== 'visa' ? '100%' : '50%'}`}}></LogoIcon>
+                                <LogoIcon src={cardType === 'visa' ? visa : mastercard} style={{width: `${cardType=== 'visa' ? '100%' : '60%'}`, height: `${cardType=== 'visa' ? '100%' : '50%'}`}}></LogoIcon>
                             </Logo>
                         </WrapperContent>
                     </DataWrapper>
                     {showOptions && <CardOptions handleEyeOpen={handleEyeOpen} eyeOpen={eyeOpen} handleFlip={handleFlip} cardType={cardType} handleStatsClick={handleStatsClick}/>} 
                 </CardContainer>
-                </Front>
             </CardWrapper>   
             
         )
     };
 
-   
-    const CreditCardBack = ({dataValid, cvv, showOptions, handleFlip, logo, handleEyeOpen, eyeOpen}) => {
-        const cardType = logo;
+    const CreditCardBack = ({dataValid, cvv, showOptions, handleFlip,  cardType, handleEyeOpen, eyeOpen}) => {
         return(
             <CardWrapper>
-                <Back>
                 <CardContainer>
                     <Card>
-                    <CardImage back style={{width: `${cardType === 'visa' ? '118%' : '127%'}`}} src={cardType === 'visa' ? visaBack : mastercardBack} />
+                    <CardImage src={cardType === 'visa' ? visaBack : mastercardBack} />
                     </Card>
                     <BackWrapped>
                         <DataValid>{dataValid}</DataValid>
                         <Cvv>{cvv}</Cvv>
                     </BackWrapped>  
                     {showOptions && <CardOptions handleEyeOpen={handleEyeOpen} eyeOpen={eyeOpen} handleFlip={handleFlip} cardType={cardType}/>}
-                </CardContainer>
-                
-                </Back>   
+                </CardContainer>   
             </CardWrapper>
            
         )
     }; 
 
-    const Statistics = (dataStatistic, logo) => {
+    const Statistics = ({dataStatistic, statRef}) => {
         return(
-            <StatWrapper>
+            <StatWrapper ref={statRef}>
                     <StatsList>
                         <Title>Card stats</Title>
                         {dataStatistic.dataStatistic.map((item) => (
-                        <StatsContext key={item.id}>{item.date}----{item.place}----{item.expense} {item.currency}</StatsContext>
+                        <StatsContext key={item.id}  >{item.date}----{item.place}----{item.expense} {item.currency}</StatsContext>
                         ))}
                     </StatsList>
             </StatWrapper>
@@ -245,6 +249,15 @@ const StatsContext = styled.p`
         const [showOptions, setShowOptions] = useState(false);
         const [eyeOpen, setEyeOpen] = useState(false);
         const [statClicked, setStatClicked] = useState(false);
+        const [contentHeight, setContentHeight] = useState(0);
+        const statRef = useRef(null);
+
+        
+        useEffect(() => {
+            if (statRef.current) {
+            setContentHeight(statRef.current.offsetHeight); 
+            }
+        }, [statClicked]);
 
         const handleCardNumber = (numberCard) => {
             const groups = [];
@@ -262,7 +275,6 @@ const StatsContext = styled.p`
             const groups = [];
                 for (let j = 1; j < 4; j++) {
                         groups.push(MASK);
-                        console.log(groups)
                         continue;
                 }
                       const group = numberCard.slice(-4);
@@ -292,43 +304,44 @@ const StatsContext = styled.p`
             }
 
         return (
-        <Wrapper onClick={handleClick}>
-            {isFlipped && 
-            <CreateCardFace 
-                numberCard={updateCardNumber}
-                fullName={fullName}
-                logo={logo}
-                handleFlip={handleFlip}
-                isFlipped={isFlipped}
-                showOptions={showOptions}
-                handleEyeOpen={handleEyeOpen}
-                eyeOpen={eyeOpen}
-                hiddenNumber={hiddenNumber}
-                handleStatsClick={handleStatsClick}
-            />
+        <Wrapper key={id}  style={{ marginBottom: statClicked ? `${contentHeight + 80}px`: '200px' }}>
+            <Sides onClick={handleClick}>
+                <Front  isFlipped={isFlipped}>
+                    <CreateCardFace numberCard={updateCardNumber}
+                        fullName={fullName}
+                        logo={logo}
+                        hiddenNumber={hiddenNumber}
+                        showOptions={showOptions}
+                        dataStatistic={dataStatistic}
+                        handleFlip={handleFlip}
+                        isFlipped={isFlipped}
+                        handleEyeOpen={handleEyeOpen}
+                        eyeOpen={eyeOpen}
+                        handleStatsClick={handleStatsClick}
+                    />
+                </Front>
+                <Back  isFlipped={isFlipped}>
+                    <CreditCardBack 
+                        dataValid={dataValid} 
+                        cvv={cvv} 
+                        logo={logo} 
+                        showOptions={showOptions}
+                        handleClick={handleClick}
+                        handleEyeOpen={handleEyeOpen}
+                        eyeOpen={eyeOpen}
+                        dataStatistic={dataStatistic}
+                        handleFlip={handleFlip}
+                    /> 
+                </Back>
+            </Sides>  
+            {statClicked && 
+                     <Statistics 
+                     statRef={statRef}
+                    dataStatistic={{dataStatistic}}
+                    />  
+                
             }
-            {!isFlipped && 
-            <CreditCardBack 
-              dataValid={dataValid} 
-              cvv={cvv} 
-              logo={logo} 
-              showOptions={showOptions}
-              handleClick={handleClick}
-              handleFlip={handleFlip}
-              isFlipped={isFlipped}
-              handleEyeOpen={handleEyeOpen}
-              eyeOpen={eyeOpen}
-            /> 
-            }
-            {statClicked &&
-            <Statistics 
-            logo={logo} 
-            dataStatistic={dataStatistic}
-            />
-            }
-            
-        </Wrapper>     
-            
+        </Wrapper>      
         )
     }
 

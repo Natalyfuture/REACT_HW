@@ -1,7 +1,7 @@
 import React, { useState, useEffect , useRef} from 'react';
 import  styled from 'styled-components';
-import visaFace from '../Images/Visa_face.jpg';
-import mastercardFace from '../Images/Mastercard_face.jpg';
+import visaFace from '../Images/VISA FRONT SIDE.png';
+import mastercardFace from '../Images/MC FRONT SIDE.png';
 import visa from '../Images/LogoVisa.png';
 import mastercard  from '../Images/Mastercard.png';
 import { useNavigate } from 'react-router-dom';
@@ -56,13 +56,13 @@ const DataWrapperNewCard = styled.div`
     z-index: 115;
 `;
 
-const NewCardCardNumber = styled.span`
+const NewCardNumber = styled.span`
     display: block;
-    text-align: center;
+    text-align: left;
     color: white;
-    font-size: 25px;
-    font-weight: 500;
-    margin: 145px 100px 0 0px;
+    font-size: 32px;
+    transform: translateY(-50%);
+    margin: 145px 100px 0 57px;
    
 `;
 
@@ -85,15 +85,19 @@ const WrapperContentNewCard = styled.div`
 `;
 
 const FullNameNewCard = styled.h3`
+    font-family: 'Abel';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    letter-spacing: 2.4px;
     color: white;
-    font-size: 16px;
-    letter-spacing: 1.2px;
     margin-top: 80px; 
 `;
 
 const LogoNewCard = styled.div`
-    width: 70px;
-    height: 55px;
+    width: 76px;
+    height: 60px;
     margin-top: 70px;
     
 `;
@@ -104,12 +108,20 @@ const LogoIconNewCard = styled.img`
     
 `;
 
-const ErrorText = styled.span`
+const ErrorNumber = styled.span`
     color: #f00;
     font-size: 20px;
     position: absolute;
     bottom: 760px;
     left: 80px;
+`;
+
+const ErrorCvv = styled.span`
+  color: #f00;
+  font-size: 20px;
+  position: absolute;
+  bottom: 580px;
+  left: 80px;
 `;
 
 const Label = styled.label`
@@ -174,17 +186,15 @@ const BackgroundWrapper = styled.div`
   `;
 
 export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
-  console.log(newCard)
  
       const [numberCard, setNumberCard] = useState('');
       const [cvv, setCvv] = useState('');
       const [fullName, setFullName] = useState('');
       const [logo, setLogo] = useState('');
-      const [isNumberCardValid, setIsNumberCardValid] = useState(false)
-      const [isValid, setIsValid] = useState(true);
+      const [isNumberCardValid, setIsNumberCardValid] = useState(false);
+      const [isCvvValid, setIsCvvValid] = useState(false)
       const [errors, setErrors] = useState({});
       const [isSubmitted, setIsSubmitted] = useState(false);
-      const [dataList, setDataList] = useState([]);
       
  
       const navigate = useNavigate();
@@ -205,21 +215,14 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
                      numbers: formData.numberCard,
                      type: formData.logo,
                      expiry_date: currentData,
-                     cvv: 293
+                     cvv: formData.cvv
                      },
                  statistic: Array(0),
          
         }
-        console.log(newCardData)
         return newCardData
         };
-      
-      useEffect(() =>{
-        console.log(newCard)
-      }, [newCard]);
 
-
-       
       const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -231,13 +234,8 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
           id: 123,
         };
 
-        addNewCard(newCard);
-        console.log(handleValidForm)
-
           if(currentValidForm){
-           
-            console.log("newCard before fetch", newCard)
-            
+            addNewCard(newCard);
             
               return fetch('https://my.api.mockaroo.com/cards/123.json?key=778301b0', {
                 method: 'POST',
@@ -258,9 +256,6 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
                 console.error('Error in first then block:', error);
               })
               .then((data) => {
-                console.log(data)
-                const state = newCard
-                console.log(state)
                 navigate('/');
                 setIsSubmitted(true);
                 setNumberCard('');
@@ -275,10 +270,10 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
           }    
       };
 
-      const handleValidForm = (isNumberCardValid, cvv, fullName, logo) => {
+      const handleValidForm = (isNumberCardValid, isCvvValid, fullName, logo) => {
         return(
           isNumberCardValid &&
-          isCvvValid(cvv) &&
+          isCvvValid &&
           isFullNameValid(fullName) &&
           isLogoValid(logo)
         );
@@ -290,14 +285,20 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
        if (regex.test(numberCard)) {
          setErrors({});
          setIsNumberCardValid(true);
-         console.log("Number is valid");
        } else {
          setErrors({number: 'Enter valid number'});
-          console.log(errors)
-         console.log("Number is not valid");
        }
-      
       }, [numberCard]);
+
+      useEffect(() => {
+        const regexCvv = /^\d(?:\d{2})$/
+        if(regexCvv.test(cvv)){
+          setErrors({});
+          setIsCvvValid(true);
+         } else {
+          setErrors({cvv: 'Enter valid cvv'});
+         }
+      }, [cvv])
 
       const handleCardNumber = (numberCard) => {
         const groups = [];
@@ -315,18 +316,10 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
       };
 
      const currentInputCardNumber = handleCardNumber(numberCard)
-     
-     console.log(currentInputCardNumber)
 
       const handleInputCvv = (event) => {
         const inputCvv = event.target.value;
-        console.log(inputCvv.length);
-        setCvv(inputCvv);
-        console.log(isCvvValid)
-      };
-
-      const isCvvValid = (cvv) => {
-        return cvv.length === 3;
+          setCvv(inputCvv);
       };
 
       const capitalizeWords = (str) => {
@@ -347,7 +340,6 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
 
       const handleLogo = (event) => {
         const inputLogo = event.target.value.trim();
-        console.log(inputLogo)
         setLogo(inputLogo);
       }
       const isLogoValid = (logo) => {
@@ -355,7 +347,6 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
       };
 
       const currentValidForm = handleValidForm(isNumberCardValid, cvv, fullName, logo)
-      console.log(currentValidForm)
 
       const cardType = logo;
 
@@ -364,7 +355,7 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
             <Title>Create a new card</Title>
             <ContainerNewCard>
                 <DataWrapperNewCard>
-                    <NewCardCardNumber>{ currentInputCardNumber }</NewCardCardNumber>
+                    <NewCardNumber>{ currentInputCardNumber }</NewCardNumber>
                     <WrapperContentNewCard style={{marginLeft: `${cardType === 'visa' ? '95px' : '140px'}`}}>
                         <FullNameNewCard>{formData.fullName}</FullNameNewCard>
                         <LogoNewCard>
@@ -391,21 +382,23 @@ export const CardForm = ({ newCard, setNewCard, addNewCard}) => {
                 <FormContainer onSubmit={handleSubmit}>
                     <WrapperInputNumber>
                         <Label>Card number
-                            <Input type="text" value={numberCard} onChange={handleInputNumberCard} required maxLength="16" ></Input>
+                            <Input type="text" value={numberCard} onChange={handleInputNumberCard} required maxLength="16" />
                         </Label>
                         {numberCard !=='' && !isNumberCardValid && (
-                        <ErrorText key={'error-text'} >{errors.number}</ErrorText>
+                        <ErrorNumber key={'error-number'} >{errors.number}</ErrorNumber>
                         )}
                     </WrapperInputNumber>
                     <Label>CVV
-                        <Input type="text"  value={cvv} onChange={handleInputCvv} required maxLength="3"></Input>
+                        <Input type="text"  value={cvv} onChange={handleInputCvv} required maxLength="3" />
                     </Label>
-
+                          {cvv !=='' && !isCvvValid && (
+                            <ErrorCvv key={'error-cvv'} >{errors.cvv}</ErrorCvv>
+                          )}
                     <Label >Your fullname
-                        <Input type="text" value={fullName} onChange={handleFullName} required></Input>
+                        <Input type="text" value={fullName} onChange={handleFullName} required />
                     </Label>
                     <Label >VISA or MASTERCARD
-                        <Input type="text" value={logo} onChange={handleLogo} required></Input>
+                        <Input type="text" value={logo} onChange={handleLogo} required />
                     </Label>
                     <Button type={'submit'} disabled={!handleValidForm}>Add card</Button>
             </FormContainer>

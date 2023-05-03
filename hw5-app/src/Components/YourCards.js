@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
-/* import { useLocation } from 'react-router-dom'; */
+import React from 'react';
 import { MyCard } from './CreateCard';
-/* import { CardForm } from './CardForm'; */
 import '../App.css'
 
 export const YourCards = ({cards}) => {
-    console.log(cards)
     const renderCard = (cardData, user_name) => {
-        console.log(cardData)
         return (
             <div key={cardData.id}>
                 <MyCard
@@ -27,7 +23,6 @@ export const YourCards = ({cards}) => {
         return <div>Loading...</div>;
     };
 
-   
     return(
         <div>
             {cards.map(({user_name, data})  => {
@@ -36,7 +31,6 @@ export const YourCards = ({cards}) => {
                          renderCard(cardData, user_name)
                      )) 
             }
-               
             )} 
         </div>
     )
