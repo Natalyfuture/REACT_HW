@@ -13,7 +13,7 @@ const MyFilms = ({myFilms}) => {
     return(
         <div>
             {myFilms.map((myFilm) => (
-                <Film key={myFilm} myFilm={myFilm}/>
+                <Film key={myFilm.id} myFilm={myFilm}/>
             ))}
         </div>
     )
@@ -22,9 +22,10 @@ const mapStateToProps = (state) => {
     return {
         myFilms: state.myFilms.myFilms,
     }
-    
-
 }
 
+
 export default connect(mapStateToProps, null)(MyFilms);
+
+
 

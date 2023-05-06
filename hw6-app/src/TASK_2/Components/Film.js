@@ -1,6 +1,6 @@
 export const Film = ({myFilm}) => {
     console.log(myFilm)
     return (
-        <h3>{myFilm}</h3>
+        <h3>{myFilm.title}</h3>
     )
 }

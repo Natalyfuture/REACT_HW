@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { createMyFilm } from './redux/actions';
 
+export const Form = () => {
+    const [inputValue, setInputValue] = useState(''); 
+    const [myFilms, setMyFilms] = useState([]);
 
-export const Form = ({setInputValue, handleInput, inputValue, addMyFilms}) => {
-    console.log(inputValue)
-       
+    const handleInput = (event) => {
+        setInputValue(event.target.value);
+    };
+
+   
+
+    const addMyFilms = (inputValue) => {
+        const myFilm = {
+          title: inputValue,
+          id: Date.now().toString(),
+        };
+        setMyFilms([...myFilms, myFilm]);
+        setInputValue('');
+      };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         addMyFilms(inputValue);
-        setInputValue('')
-        
     };
 
     return(
@@ -27,3 +41,12 @@ export const Form = ({setInputValue, handleInput, inputValue, addMyFilms}) => {
         </div>
     )
 } 
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        createMyFilm: (myFilm) => dispatch(createMyFilm({myFilm})),
+    }
+    
+}
+
+export default connect(null, mapDispatchToProps)(Form);
