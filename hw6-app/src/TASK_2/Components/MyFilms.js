@@ -7,7 +7,7 @@ const MyFilms = ({myFilms}) => {
 
   if(!myFilms.length){
         return(
-            <p>Пока что ничего не хочу смотреть :(</p>
+            <h2>Пока что ничего не хочу смотреть :(</h2>
         )
     }
     return(

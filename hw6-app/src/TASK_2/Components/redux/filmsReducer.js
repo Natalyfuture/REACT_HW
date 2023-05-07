@@ -1,4 +1,4 @@
-import { ADD_FILM } from './types';
+import { ADD_FILM , FETCH_FILMS } from './types';
 
 const initialState = {
     myFilms: [],
@@ -12,6 +12,11 @@ export const filmsReducer = (state = initialState, action) => {
             ...state,
             myFilms: [...state.myFilms, action.payload],
           };
+          case FETCH_FILMS:
+            return {
+              ...state,
+              fetchedFilms: action.payload
+            };
         default:
             return state;
     }

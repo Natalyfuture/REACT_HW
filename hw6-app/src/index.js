@@ -3,15 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter as Router} from 'react-router-dom';
 import RouterApp from './RouterApp';
-import {createStore, compose} from 'redux';
+import {createStore, compose, applyMiddleware} from 'redux';
 import {rootReducer } from './TASK_2/Components/redux/rootReducer';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 /* import App from './App';
 import reportWebVitals from './reportWebVitals'; */
 
 
-const store = createStore(rootReducer, compose( 
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = createStore(
+  rootReducer, 
+  compose(
+    applyMiddleware(thunk), 
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
