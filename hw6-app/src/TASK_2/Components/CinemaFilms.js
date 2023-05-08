@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 const CinemaFilms = () => {
     const dispatch = useDispatch();
     const films = useSelector((state) => state.myFilms.fetchedFilms);
-    console.log(films.length)
 
     if(!films.length){
         return (
@@ -16,8 +15,7 @@ const CinemaFilms = () => {
             </div>
          )    
     }
-      
-        
+         
     return (
         <div>
             {films.map((film) => (

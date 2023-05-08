@@ -19,8 +19,8 @@ export const CastomForm = () => {
 
     return(
         <form onSubmit={handleSubmit}>
-            <input type='text' name='name' placeholder='Your name' value={name} onChange={handleInputName} />
-            <input type='text' name='surname' placeholder='Your surname' value={surname} onChange={handleInputSurname}/ >
+            <input type='text' name='name' placeholder='Your name' value={name} onChange={handleInputName}  required />
+            <input type='text' name='surname' placeholder='Your surname' value={surname} onChange={handleInputSurname} required / >
             <button type='submit'>Submit</button>
         </form>
     )

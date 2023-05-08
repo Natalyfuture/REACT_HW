@@ -3,7 +3,6 @@ import {Film} from './Film';
 import { connect } from 'react-redux';
 
 const MyFilms = ({myFilms}) => {
-    console.log(myFilms)
 
   if(!myFilms.length){
         return(
