@@ -1,0 +1,47 @@
+.lucknow_content{
+    width: 1121px;
+    height: 850px;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    padding: 60px 45px 100px 45px;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+   
+    &-header{
+        width: 1040px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &-title{
+        width: 320px;
+        height: 130px;
+        position: relative;
+    }
+    &-text{
+        font-family: 'Spartan';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 42px;
+        line-height: 65px;
+        text-align: left;
+        margin: 0;
+    }
+}
+.container_fixed{
+    position: fixed;
+    top: 80px;
+    left: 140px;
+    right: 0;
+}
+.img_smile{
+    position: absolute;
+    bottom: 0;
+    right: 90px;
+
+}
+.icons{
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
+    height: 50px;
+}

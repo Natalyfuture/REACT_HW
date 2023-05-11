@@ -1,0 +1,115 @@
+.menu{
+    width: 254px;
+    margin-top: 80px;
+        &_manager{
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 86px;
+        }
+        &_nav{
+            margin: 0 auto;
+        }
+        
+        &_item{
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            &:last-of-type{
+                margin-bottom: 13px;
+            }
+            &--active .menu-icon{
+                background-color: #DF4545;
+            }
+        }
+        
+        &_icon{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 44px;
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            margin-right: 45px;
+        }
+        &_title{
+            font-family: 'Spartan';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            color: #919191;
+        }
+
+}
+
+.faster_delivery{
+    width: 188px;
+    height: 274px;
+    position: relative;
+    padding-top: 110px;
+}
+
+.delivery{
+    position: absolute;
+    top: 0;
+    left: 0;       
+}
+
+.square{
+    width: 184px;
+    height: 162px;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    
+    &_content{
+        position: absolute;
+        top: 170px;
+        left: 26px;
+    }
+    &_title{
+        width: 88px;
+        font-family: 'Spartan';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 20px;
+        margin-bottom: 12px;
+    }
+}
+.know-more{
+    display: flex;
+    width: 130px;
+    height: 11px;
+    align-items: center;
+    justify-content: center;
+    &_text{
+        font-family: 'Spartan';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 11px;
+        margin-right: 56px;
+    }
+    &_arrow{
+        width: 20px;
+        height: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+}
+.dash{
+    width: 10px;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    top: 6px;
+    left: -3px;
+}
