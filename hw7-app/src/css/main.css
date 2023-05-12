@@ -152,6 +152,33 @@
   padding: 50px 60px 50px 35px;
 }
 
+.routerHeader {
+  height: 100px;
+  padding-left: 50px;
+}
+
+.arrow {
+  max-width: 50px;
+  max-height: 50px;
+  cursor: pointer;
+  position: absolute;
+  background-color: #DEEBFB;
+  -o-object-fit: cover;
+     object-fit: cover;
+  left: 1px;
+  top: 0;
+}
+.arrow_wrapper {
+  width: 51px;
+  height: 51px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: fixed;
+  left: 50px;
+  top: 15px;
+  cursor: pointer;
+}
+
 .lucknow_content {
   width: 1121px;
   height: 850px;
@@ -593,8 +620,8 @@
 }
 .title_drooling-face {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 70px;
+  right: 570px;
 }
 
 .form {
@@ -608,7 +635,7 @@
 }
 .form_container {
   width: 578px;
-  height: 404px;
+  height: auto;
   background: #FFFFFF;
   border-radius: 35px;
   padding: 97px 95px 47px 95px;

@@ -21,8 +21,8 @@
     }
     &_drooling-face{
         position: absolute;
-        bottom: 0;
-        right:0;
+        top: 70px;
+        right:570px;
     }
 }
 .form{
@@ -31,7 +31,7 @@
     &_container{
     
         width: 578px;
-        height: 404px;
+        height: auto;
         background: #FFFFFF;
         border-radius: 35px;
         padding: 97px 95px 47px 95px;

@@ -33,7 +33,7 @@ const Login = () => {
                 <img className='img_leaf' src={Leaf} alt='leaf' />
                 <img className='img_orange' src={Orange} alt='Orange' />
                 <img className='img_bitten-apple' src={BittenApple} alt='BittenApple' />
-                <div classname='title_wrapper'>
+                <div className='title_wrapper'>
                     <h1 className='title'>Welcome To 
                         Yelp App
                     </h1>
@@ -46,13 +46,14 @@ const Login = () => {
                             {inputData.map((item => (
                                 <Input key={item} name={item} value={values[item]} handleChange={handleChange}/>
                             )))}
-                    </div>
-                    <div className='button_container'>
+                        <div className='button_container'>
                         <button className='button'>Login</button>
                         <div className='link_wrapper'>
                         <a className='link'>dont have an account</a>
                         </div>
                     </div>
+                    </div>
+                    
                 </form>   
             </div>
         </section>
