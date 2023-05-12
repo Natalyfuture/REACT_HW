@@ -1,0 +1,116 @@
+.login_container{
+    position: relative;
+    width: 1440px;
+    background-color: #DEEBFB;
+    border-radius: 30px;
+    padding: 101px 0 248px 0;
+    margin: 0 auto;
+
+}
+.title{
+    width: 320px;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 65px;
+    text-align: center;
+    margin: 0 auto;
+    &_wrapper{
+        position: relative;
+    }
+    &_drooling-face{
+        position: absolute;
+        bottom: 0;
+        right:0;
+    }
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    &_container{
+    
+        width: 578px;
+        height: 404px;
+        background: #FFFFFF;
+        border-radius: 35px;
+        padding: 97px 95px 47px 95px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        margin-top: 17px;
+    
+    }
+}
+
+.button{
+    width: 163px;
+    height: 50px;
+    background: #2D9CDB;
+    border-radius: 15px;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+   
+    &_container{
+        width: 163px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 37px;
+    }
+}
+.link{
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+    text-decoration-line: underline;
+    text-align: center;
+    cursor: pointer;
+    &_wrapper{
+        width: 131px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+}
+.img{
+    &_grapes{
+        position: absolute;
+        top: -70px;
+        left: -70px;
+    }
+    
+    &_leaf{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    &_orange{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    &_bitten-apple{
+        width: 154px;
+        height: 151px;
+        position: absolute;
+        bottom: 100px;
+        left: 50px;
+    }
+}
+.input{
+    width: 388px;
+    height: 50px;
+    box-sizing: border-box;
+    background: #F3F3F3;
+    border-radius: 15px;
+    margin-bottom: 37px;
+}
+
+   

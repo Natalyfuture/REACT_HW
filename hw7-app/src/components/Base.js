@@ -5,7 +5,7 @@ import Filter from './Filter';
 import AllItems  from './AllItems';
 import '../css/main.css';
 
-const Base = () => {
+const BaseHome = () => {
     return(
         
         <section className="lucknow">
@@ -23,4 +23,4 @@ const Base = () => {
         
     )
 }
-export default Base;
+export default BaseHome;
