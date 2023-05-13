@@ -3,16 +3,19 @@ import '../css/main.css';
 
 
 
-export const Input = ({name, value, handleChange}) => {
+export const Input = ({name, value, handleChange, handleBlur, errors, touched}) => {
     return (
-        <label > {name.toUpperCase()}
-            <input className='input'
+        <label className='input_wrapper'> {name.toUpperCase()}
+            <input 
+            className='input'
             name={name}
             placeholder={`Your ${name}`}
-            value={value.name}
+            value={value}
             onChange={handleChange}
             type={name}
+            onBlur={handleBlur}
             />
+            {touched && errors ? <span className='errors'>{errors}</span> : null}
          </label>
     )
        

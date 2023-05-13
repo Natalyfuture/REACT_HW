@@ -5,21 +5,44 @@ import Orange from '../assets/icons/orange.svg';
 import BittenApple from '../assets/icons/bitten-apple.svg';
 import DroolingSmile from '../assets/images/drooling-face-emoji.png'
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 import { Input } from './Input';
-
+import app from './base';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 import '../css/main.css';
+import { AuthContext } from './AuthContext';
 
-const Login = () => {
+const auth = getAuth();
 
-    const{ handleSubmit, handleChange, values } = useFormik({
+const Auth = () => {
+    const { setCurrentUser} = React.useContext(AuthContext);
+
+    const{ handleSubmit, handleChange, values, handleBlur, touched, errors} = useFormik({
         initialValues: {
             login: '',
             password: '',
         },
-        onSubmit: (values) => {
+        validationSchema : Yup.object({
+            login : Yup.string().max(15 , 'Login mus be shorter than 15 characters').required(),
+            password : Yup.string().min(8 , 'Password must be longer than 8 characters').required(),
+        }),
+        onSubmit: async (values) => {
                 console.log(values)
+                await signInWithEmailAndPassword(auth, values.login, values.password )
+                .then((userCredential)=> {
+                    const user = userCredential.user;
+
+                   if(user) {
+                    setCurrentUser(user)
+                   }
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    console.log(errorMessage)
+                });
+            
         }
     })
 
@@ -44,10 +67,17 @@ const Login = () => {
                 <form className='form' onSubmit={handleSubmit}>
                     <div className='form_container'>
                             {inputData.map((item => (
-                                <Input key={item} name={item} value={values[item]} handleChange={handleChange}/>
+                                <Input 
+                                key={item} 
+                                name={item} 
+                                value={values[item]} 
+                                handleChange={handleChange} 
+                                handleBlur={handleBlur}
+                                touched={touched[item]}
+                                errors={errors[item]}/>
                             )))}
                         <div className='button_container'>
-                        <button className='button'>Login</button>
+                        <button className='button' type='submit'>Login</button>
                         <div className='link_wrapper'>
                         <a className='link'>dont have an account</a>
                         </div>
@@ -60,4 +90,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Auth;
