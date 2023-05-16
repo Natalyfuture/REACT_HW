@@ -6,6 +6,7 @@
     padding: 60px 45px 100px 45px;
     flex: 1 1 auto;
     box-sizing: border-box;
+    position: relative;
    
     &-header{
         width: 1040px;
@@ -44,4 +45,5 @@
     justify-content: space-between;
     width: 120px;
     height: 50px;
+    cursor: pointer;
 }

@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ActivePlus from '../assets/icons/active_plus.svg';
+import Plus from '../assets/icons/plus .svg';
 import '../css/main.css';
 
-export const Item = ({item}) => {
+export const Item = ({item, addChosenItem, setChosenItem, chosenItem, deleteChosenItem}) => {
+  const [activeSpan, setActiveSpan] = useState(false);
+  console.log(chosenItem)
+  console.log(activeSpan)
+
+  const click = () => {
+
+    setActiveSpan(prev => !prev);
+
+    if(!activeSpan){
+
+      addChosenItem(item)
+
+    }else {
+
+      deleteChosenItem(item)
+
+    }
+  }
+
     return (
         <div className="allItems_block">
         <div className="allItems_content">
@@ -13,8 +34,15 @@ export const Item = ({item}) => {
             <img className="img_top" src={item.src} />
           </div>
         </div> 
-        <div className="circle">
-        <span className="plus">+</span>
+        <div 
+        onClick={click}
+        className="circle"
+        >
+        {activeSpan 
+        ? <img className="plus" src={ActivePlus} />
+        : <img className="plus" src={Plus} />
+      } 
+        
       </div>
     </div>
     )

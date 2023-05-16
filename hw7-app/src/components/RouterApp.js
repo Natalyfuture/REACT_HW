@@ -1,12 +1,12 @@
 import React from 'react'; 
-import { Routes, Route , useNavigate, Navigate} from "react-router-dom";
+import { Routes, Route , Navigate} from "react-router-dom";
 import BaseHome from './Home';
 import Auth from '../components/Auth';
 import Register from '../components/Register';
 
 import '../css/main.css';
 import { AuthContext } from './AuthContext';
-import GoBackButton from './GoBackButton';
+
 
 
 const PrivateRoute = ({children}) => {
@@ -22,9 +22,6 @@ const RouterApp = () => {
     const { currentUser} = React.useContext(AuthContext)
     return(
         <>
-        <div className='routerHeader'>
-            <GoBackButton />
-        </div>
         <Routes>
             <Route 
                 path='/' 

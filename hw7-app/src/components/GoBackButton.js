@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Routes, Route , useNavigate, Navigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 import ArrowBack from '../assets/images/arrow.png';
 import '../css/main.css';

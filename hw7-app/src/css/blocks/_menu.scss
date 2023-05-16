@@ -1,6 +1,10 @@
 .menu{
+    display: block;
     width: 254px;
     margin-top: 80px;
+    margin: 0 auto;
+    padding-top: 99px;
+
         &_manager{
             width: 80px;
             height: 80px;
@@ -9,7 +13,20 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 86px;
+            margin-bottom: 13px;
+            &-name{
+                font-family: 'Spartan';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 16px;
+                margin-bottom: 57px;
+
+            }
+            &-wrapper{
+                
+                margin-left: 47px;
+            }
         }
         &_nav{
             margin: 0 auto;

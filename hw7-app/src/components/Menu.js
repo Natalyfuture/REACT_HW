@@ -17,9 +17,14 @@ const Menu = () => {
 
     return(
         <>
-            <div className="menu_manager">
-              <img className="menu_manager_img" src={managerIcon} alt=''/>
+            <div className='menu_manager-wrapper'>
+                <div className="menu_manager">
+                    <img className="menu_manager_img" src={managerIcon} alt=''/>
+                    
+                    </div>
+                    <h3  className='menu_manager-name'>Alka Yagik</h3>
             </div>
+            
             <nav className="menu_nav">
                 <div className="menu_list">
                     {menuList.map(({ name, svgName }) => (

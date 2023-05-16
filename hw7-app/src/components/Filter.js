@@ -7,7 +7,6 @@ import Donut from '../assets/images/delicious-donut.png';
 import Drinks from '../assets/images/drinks.png';
 import '../css/main.css';
 import Discount from './Discount';
-import { sortingItems } from './sortingItems';
 
 
 export const filterList = [

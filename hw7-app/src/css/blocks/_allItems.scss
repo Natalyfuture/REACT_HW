@@ -74,10 +74,10 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #000000;
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
 
 }
 .plus{
@@ -85,9 +85,8 @@
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
-    color:#FFFFFF;
-    font-weight: 800;
-}
+  
+} 
 .img_box{
     position: absolute;
     width: 121px;

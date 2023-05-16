@@ -1,13 +1,10 @@
 import React from 'react';
 import Filter from '../assets/icons/filter.svg';
-import { allItems } from './allItemsConst';
 import '../css/main.css';
 import Article from './Article';
 import { Item } from './Item';
-import { sortingItems } from './sortingItems';
 
-const AllItems = ({sortedItem}) => {
-    console.log(sortedItem)
+const AllItems = ({sortedItem, addChosenItem, setChosenItem, chosenItem, deleteChosenItem}) => {
     
     return(
         <div className="allItems">
@@ -19,7 +16,13 @@ const AllItems = ({sortedItem}) => {
               <div className="allItems_flex">
                   {sortedItem.map((item) => (
                       <div key={item.id} className="allItems_item">
-                       <Item item={item}/>
+                       <Item 
+                       item={item} 
+                       addChosenItem={addChosenItem} 
+                       setChosenItem={setChosenItem} 
+                       chosenItem={chosenItem} 
+                       deleteChosenItem={deleteChosenItem}
+                       />
                       </div>
                   ))}
                </div>

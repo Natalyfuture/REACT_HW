@@ -39,9 +39,7 @@ const Register = () => {
                     goTo('/login')
                 }catch (error){
                     console.error(error)
-                }
-                
-               
+                }   
         }
     })
 

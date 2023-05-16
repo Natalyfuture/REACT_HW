@@ -5,29 +5,31 @@
     background-color: #DEEBFB;
     border-radius: 30px;
     padding: 50px 60px 50px 35px;
+    margin: 0 200px 0 200px;
+
 }
 .routerHeader{
     height: 100px;
     padding-left: 50px;
+    position: relative;
 }
 .arrow{
     max-width: 50px;
     max-height: 50px;
-    cursor: pointer;
     position: absolute;
+    top: 0;
+    left: 0;
     background-color: #DEEBFB;
     object-fit: cover;
-    left: 1px;
-    top: 0; 
-    
     &_wrapper{
         width:51px;
         height: 51px;
         border-radius: 50%;
         overflow: hidden;
+        cursor: pointer;
         position:fixed;
-        left: 50px;
-        top: 15px;
+        left: 347px;
+        top: 50px;
         cursor: pointer;
     }
 }
