@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext}from 'react';
+import { useNavigate } from 'react-router-dom';
 import Grapes from '../assets/images/grapes.png';
 import Leaf from '../assets/images/leaf.png';
 import Orange from '../assets/icons/orange.svg';
@@ -7,17 +8,20 @@ import DroolingSmile from '../assets/images/drooling-face-emoji.png'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { Input } from './Input';
+import { Input } from './Input'; 
 import app from './base';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 import '../css/main.css';
 import { AuthContext } from './AuthContext';
+/* import { useCallback} from 'react'; */
 
 const auth = getAuth();
 
 const Auth = () => {
-    const { setCurrentUser} = React.useContext(AuthContext);
+    const { setCurrentUser} = useContext(AuthContext);
+    const navigate = useNavigate();
+
 
     const{ handleSubmit, handleChange, values, handleBlur, touched, errors} = useFormik({
         initialValues: {
@@ -44,7 +48,12 @@ const Auth = () => {
                 });
             
         }
-    })
+    });
+
+    const onClick = () =>{
+            navigate('/register');
+        }
+        
 
     const inputData = ['login', 'password']
 
@@ -79,7 +88,7 @@ const Auth = () => {
                         <div className='button_container'>
                         <button className='button' type='submit'>Login</button>
                         <div className='link_wrapper'>
-                        <a className='link'>dont have an account</a>
+                        <a className='link' onClick={onClick}>dont have an account</a>
                         </div>
                     </div>
                     </div>

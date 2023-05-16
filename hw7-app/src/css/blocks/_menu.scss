@@ -13,30 +13,64 @@
         }
         &_nav{
             margin: 0 auto;
-        }
-        
+        }      
         &_item{
             display: flex;
             align-items: center;
             margin-bottom: 40px;
+            background: transparent;
+            width: 184px;
+            height: 44px;
+            box-sizing: border-box;
+            border-radius: 15px;
+            cursor: pointer;
             &:last-of-type{
                 margin-bottom: 13px;
             }
-            &--active .menu-icon{
-                background-color: #DF4545;
+            &_icon{
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 46px;
+                height: 44px;
+                background: #FFFFFF;;
+                border-radius: 15px;
+                margin-right: 45px;
+                .icon{
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 15px;
+                    &-home{
+                        stroke: #919191;
+                    }
+                    &-name{
+                    
+                    }
+                }
             }
-        }
-        
-        &_icon{
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 46px;
-            height: 44px;
-            background-color: #FFFFFF;
-            border-radius: 15px;
-            margin-right: 45px;
-        }
+            &--active{
+                background: #DF4545;
+                .menu_item_icon{
+                    background: #DF4545;
+                }
+                span{
+                    color: #FFFFFF
+                }
+                .icon-home{
+                    stroke: #FFFFFF;
+                }
+                .icon-menu{
+                    fill:#FFFFFF
+                }
+                .icon-trending{
+                    fill:#FFFFFF
+                }
+                .icon-setting{
+                    fill:#FFFFFF
+                }
+            }
+            
+        } 
         &_title{
             font-family: 'Spartan';
             font-style: normal;

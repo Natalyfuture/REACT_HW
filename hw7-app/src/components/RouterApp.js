@@ -3,24 +3,11 @@ import { Routes, Route , useNavigate, Navigate} from "react-router-dom";
 import BaseHome from './Home';
 import Auth from '../components/Auth';
 import Register from '../components/Register';
-import ArrowBack from '../assets/images/arrow.png';
+
 import '../css/main.css';
 import { AuthContext } from './AuthContext';
+import GoBackButton from './GoBackButton';
 
-const GoBackButton = () =>{
-    const navigate = useNavigate();
-    const handleButton = () => {
-        navigate(-1)
-    }
-    return(
-        <div className='arrow_wrapper'>
-             <button className='button-arrow' onClick={handleButton}>
-                {<img src={ArrowBack} className='arrow'/>}
-            </button>
-        </div>
-    )
-       
-} 
 
 const PrivateRoute = ({children}) => {
     let { currentUser} = React.useContext(AuthContext);

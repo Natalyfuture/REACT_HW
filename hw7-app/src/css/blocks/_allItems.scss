@@ -22,7 +22,7 @@
     }
     &_item{
         width: 200px;
-        height: 250px;
+        height: 330px;
         width: 30%;
         flex-grow: 1;
         flex-shrink: 0;
@@ -38,7 +38,7 @@
         border-radius: 30px;
         background-color: #F2EEEE;
         text-align: left;
-        padding: 26px 40px 6px 31px;
+        padding: 86px 40px 6px 31px;
         box-sizing: border-box;
         position: relative;
     }
@@ -90,13 +90,12 @@
 }
 .img_box{
     position: absolute;
-    width: 175px;
+    width: 121px;
     height: auto;
-    top: -93px;
+    top: -27px;
     right: -5px;
 }
 .img_top{
-    
     width: 100%;
     height: auto;
 }

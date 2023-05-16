@@ -37,7 +37,7 @@ import Burger4 from '../assets/images/burger4.png';
 export const allItems = [
     {
         id: 1,
-        filter: 'burger',
+        sort: 'Burger',
         title: 'Burger Wanted',
         text: 'Rels, Zoodies, Garnein Sesasam Dessigns, Redeshchein, Avocade',
         price: '$29',
@@ -46,7 +46,7 @@ export const allItems = [
     },
     {
         id: 2,
-        filter: 'chicken',
+        sort: 'Chicken',
         title: 'Butter Chicken',
         text: 'Reis, Sous-vide Chicken, Penaut Satay, Babyspian',
         price: '$56',
@@ -55,7 +55,7 @@ export const allItems = [
     },
     {
         id: 3,
-        filter: 'salmon',
+        sort: 'Rice',
         title: 'Hi, Salmon',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$69',
@@ -64,7 +64,7 @@ export const allItems = [
     },
     {
         id: 4,
-        filter: 'soup',
+        sort: 'Soup',
         title: 'I wont soup',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$69',
@@ -73,7 +73,7 @@ export const allItems = [
     },
     {
         id: 5,
-        filter: 'second',
+        sort: 'Second',
         title: 'Rice biryani',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$65',
@@ -82,7 +82,7 @@ export const allItems = [
     },
     {
         id: 6,
-        filter: 'second',
+        sort: 'second',
         title: 'Butter chicken',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$58',
@@ -91,7 +91,7 @@ export const allItems = [
     },
     {
         id: 7,
-        filter: 'donut',
+        sort: 'Donut',
         title: 'Donut with Strawberry flavor',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$21',
@@ -100,7 +100,7 @@ export const allItems = [
     },
     {
         id: 8,
-        filter: 'donut',
+        sort: 'Donut',
         title: 'Donut with Vanilla flavor',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$21',
@@ -109,7 +109,7 @@ export const allItems = [
     },
     {
         id: 9,
-        filter: 'donut',
+        sort: 'Donut',
         title: 'Donut with milk chokolate flavor',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$21',
@@ -118,7 +118,7 @@ export const allItems = [
     },
     {
         id: 10,
-        filter: 'donut',
+        sort: 'Donut',
         title: 'Donut with Nutella taste',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$21',
@@ -127,7 +127,7 @@ export const allItems = [
     },
     {
         id: 11,
-        filter: 'donut',
+        sort: 'Donut',
         title: 'Donut with black chokolate flavor',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$21',
@@ -136,7 +136,7 @@ export const allItems = [
     },
     {
         id: 12,
-        filter: 'pizza',
+        sort: 'Pizza',
         title: 'Pizza Margherita',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$42',
@@ -145,7 +145,7 @@ export const allItems = [
     },
     {
         id: 13,
-        filter: 'pizza',
+        sort: 'Pizza',
         title: 'Pizza Marinara',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$45',
@@ -154,7 +154,7 @@ export const allItems = [
     },
     {
         id: 14,
-        filter: 'pizza',
+        sort: 'Pizza',
         title: 'Pizza Carbonara',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$45',
@@ -163,7 +163,7 @@ export const allItems = [
     },
     {
         id: 15,
-        filter: 'pizza',
+        sort: 'Pizza',
         title: 'Pizza Quattro Stagioni',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$49',
@@ -172,7 +172,7 @@ export const allItems = [
     },
     {
         id: 16,
-        filter: 'pizza',
+        sort: 'Pizza',
         title: 'Pizza Frutti di Mare',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$44',
@@ -181,7 +181,7 @@ export const allItems = [
     },
     {
         id: 17,
-        filter: 'pizza',
+        sort: 'Pizza',
         title: 'Pizza Quattro Formagg',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$45',
@@ -190,7 +190,7 @@ export const allItems = [
     },
     {
         id: 18,
-        filter: 'pizza',
+        sort: 'Pizza',
         title: 'Pizza Napoletana',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$40',
@@ -199,7 +199,7 @@ export const allItems = [
     },
     {
         id: 19,
-        filter: 'pizza',
+        sort: 'Pizza',
         title: 'Pizza Emiliana',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$45',
@@ -208,7 +208,7 @@ export const allItems = [
     },
     {
         id: 20,
-        filter: 'salad',
+        sort: 'Salads',
         title: 'Potato salad',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -217,7 +217,7 @@ export const allItems = [
     },
     {
         id: 21,
-        filter: 'salad',
+        sort: 'Salads',
         title: 'Caprese salad',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -226,7 +226,7 @@ export const allItems = [
     },
     {
         id: 22,
-        filter: 'salad',
+        sort: 'salads',
         title: 'Coleslaw',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -235,7 +235,7 @@ export const allItems = [
     },
     {
         id: 23,
-        filter: 'salad',
+        sort: 'Salads',
         title: 'Chicken salad',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -244,7 +244,7 @@ export const allItems = [
     },
     {
         id: 24,
-        filter: 'salad',
+        sort: 'Salads',
         title: 'Nicoise salad',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -253,7 +253,7 @@ export const allItems = [
     },
     {
         id: 25,
-        filter: 'salad',
+        sort: 'Salads',
         title: 'Asian salad',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -262,7 +262,7 @@ export const allItems = [
     },
     {
         id: 26,
-        filter: 'drinks',
+        sort: 'Drinks',
         title: 'Orange juice',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -271,7 +271,7 @@ export const allItems = [
     },
     {
         id: 27,
-        filter: 'drinks',
+        sort: 'Drinks',
         title: 'Margarita',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -280,7 +280,7 @@ export const allItems = [
     },
     {
         id: 28,
-        filter: 'drinks',
+        sort: 'Drinks',
         title: 'Cosmopolitan',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -289,7 +289,7 @@ export const allItems = [
     },
     {
         id: 29,
-        filter: 'drinks',
+        sort: 'Drinks',
         title: 'Lemonade',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -298,7 +298,7 @@ export const allItems = [
     },
     {
         id: 30,
-        filter: 'drinks',
+        sort: 'Drinks',
         title: 'Bloody Mary',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -307,7 +307,7 @@ export const allItems = [
     },
     {
         id: 31,
-        filter: 'burgers',
+        sort: 'Burger',
         title: 'Bacon burger',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$20',
@@ -316,7 +316,7 @@ export const allItems = [
     },
     {
         id: 32,
-        filter: 'burgers',
+        sort: 'Burger',
         title: 'Double burger',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$22',
@@ -325,7 +325,7 @@ export const allItems = [
     },
     {
         id: 33,
-        filter: 'burgers',
+        sort: 'Burger',
         title: 'Jalapeno burger',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$30',
@@ -334,7 +334,7 @@ export const allItems = [
     },
     {
         id: 34,
-        filter: 'burgers',
+        sort: 'Burger',
         title: 'Bacon burge',
         text: 'Rels, Zoodies, Garnein Dressings, Avacode Edanmame, Maris.',
         price: '$29',

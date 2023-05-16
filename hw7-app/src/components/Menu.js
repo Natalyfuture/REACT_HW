@@ -1,51 +1,40 @@
-import React from 'react';
-import homeIcon from '../assets/icons/home.svg';
-import menuIcon from '../assets/icons/menu.svg';
-import trendingIcon from '../assets/icons/trending.svg';
-import settingIcon from '../assets/icons/setting.svg';
+import React, { useState } from 'react';
+
 import managerIcon from '../assets/images/manager.png'; 
 import deliveryRuns from '../assets/images/delivery-man-runs.png';
-import '../css/main.css'
+import { menuList } from './menuList';
+import { Icon } from './Icon';
+import '../css/main.css';
 
-const menuList = [
-    {
-        id: 1,
-        title: 'Home',
-        src: homeIcon,
-    },
-    {
-        id: 2,
-        title: 'Menu',
-        src: menuIcon,
-    },
-    {
-        id: 3,
-        title: 'Trending',
-        src: trendingIcon,
-    },
-    {
-        id: 4,
-        title: 'Setting',
-        src: settingIcon,
-    }
-]
+
 const Menu = () => {
+    const [active, setActive] = useState(menuList[0]);
+
+    const click = (item) => {
+        setActive(menuList.find((x) => x.name === item));
+        
+    }
+
     return(
         <>
             <div className="menu_manager">
               <img className="menu_manager_img" src={managerIcon} alt=''/>
             </div>
             <nav className="menu_nav">
-                <ul className="menu_list">
-                    {menuList.map((item) => (
-                    <li key={item.id} className="menu_item menu_item--active">
-                        <div className="menu_icon">
-                            <img src={item.src} />
+                <div className="menu_list">
+                    {menuList.map(({ name, svgName }) => (
+                    <div 
+                    key={name} 
+                    className={active.name === name ? 'menu_item menu_item--active' : 'menu_item'}
+                    onClick={() => click(name)}
+                    >
+                        <div className="menu_item_icon">
+                            <Icon name={svgName} />
                         </div>
-                        <span className="menu_title">{item.title}</span>
-                    </li>
+                        <span className="menu_title">{name.toUpperCase()}</span>
+                    </div>
                     ))}
-                </ul>
+                </div>
             </nav>
             <div className="faster_delivery">
                 <div className="delivery">

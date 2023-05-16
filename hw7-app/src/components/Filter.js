@@ -7,8 +7,10 @@ import Donut from '../assets/images/delicious-donut.png';
 import Drinks from '../assets/images/drinks.png';
 import '../css/main.css';
 import Discount from './Discount';
+import { sortingItems } from './sortingItems';
 
-const filterList = [
+
+export const filterList = [
     {
         id: 1,
         title: 'All',
@@ -42,15 +44,19 @@ const filterList = [
 
 ]
 
-const Filter = () => {
+const Filter = ({activeItem, click}) => {
     return(
         <div className="navigation">
               <ul className="navigation_fastfood">
-                {filterList.map((item) => (
-                     <li key={item.id} className="navigation_fastfood-item">
+                {filterList.map(({id, title, src}) => (
+                     <li 
+                     key={id} 
+                     className={activeItem.title === title ? "navigation_fastfood-item navigation_fastfood-item--active" : "navigation_fastfood-item"}
+                     onClick={() => click(title)}
+                     >
                      <div className="img_container">
-                       <img className="navigation_fastfood-item_img" src={item.src} />
-                       <p className="navigation_fastfood-item_text">{item.title}</p>
+                       <img className="navigation_fastfood-item_img" src={src} />
+                       <p className="navigation_fastfood-item_text">{title}</p>
                      </div>
                    </li>
                 ))}
