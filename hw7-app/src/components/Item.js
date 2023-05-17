@@ -3,10 +3,8 @@ import ActivePlus from '../assets/icons/active_plus.svg';
 import Plus from '../assets/icons/plus .svg';
 import '../css/main.css';
 
-export const Item = ({item, addChosenItem, setChosenItem, chosenItem, deleteChosenItem}) => {
+export const Item = ({item, addChosenItem,/*  setChosenItem, chosenItem, */ deleteChosenItem}) => {
   const [activeSpan, setActiveSpan] = useState(false);
-  console.log(chosenItem)
-  console.log(activeSpan)
 
   const click = () => {
 

@@ -794,6 +794,7 @@
   z-index: 10;
 }
 .basket-container {
+  display: block;
   width: 350px;
   height: 744px;
   background: #FFFFFF;
@@ -803,7 +804,19 @@
   padding: 48px 21px 34px 31px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 0 auto;
+  margin: auto;
+}
+.basket-container_stopwatch {
+  margin: 133px 0 10px 0;
+  text-align: center;
+}
+.basket-container_stopwatch-text {
+  font-family: "Spartan";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
 }
 .basket-header {
   display: -webkit-box;

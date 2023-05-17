@@ -36,6 +36,7 @@ const RouterApp = () => {
             element={currentUser ? <Navigate to='/' /> : <Auth />} />
 
             <Route path='*' element={<Navigate to='/login' />} />
+           
         </Routes>
         </>
            

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Arrow from '../assets/icons/arrow.svg';
+import '../css/main.css';
 
-export const Basket = ({chosenItem}) => {
-    console.log(chosenItem)
+export const Basket = ({chosenItem, setShowWaitingOrder, setActiveShopping}) => {
 
     const [count, setCount] = useState([
         chosenItem.map((item) => ({
@@ -10,6 +11,7 @@ export const Basket = ({chosenItem}) => {
             count: 0,
           }))
     ]);
+    const navigate = useNavigate();
 
     const handleMinusClick = (id) => {
         setCount((prevCounts) => ({
@@ -45,6 +47,12 @@ export const Basket = ({chosenItem}) => {
         }, 0);
     };
 
+    const handleOderBasket = () => {
+        setShowWaitingOrder(prev => !prev)
+        setActiveShopping(prev => !prev)
+        navigate('/');
+    }
+
     return(
         <div className='basket basket-container'>
             <div className='basket-header'>
@@ -70,12 +78,9 @@ export const Basket = ({chosenItem}) => {
             </div>
                 )
             ))}
-             {chosenItem.length === 0 && (
-                <p>No items in the basket</p> 
-    )}
-                
+          
                 <div className='basket_container-button'>
-                    <button className='button'>Order -${calculateTotalPrice()} </button>
+                    <button className='button' onClick={handleOderBasket} >Order -${calculateTotalPrice()} </button>
                 </div>
         </div>
     )

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Face from '../assets/images/drooling-face-emoji.png';
 import Search from '../assets/icons/search.svg';
 import Shop from '../assets/icons/shop.svg';
 import { Basket } from './Basket';
 import '../css/main.css';
+import { WaitingOder } from './WaitingOder';
 
 
-const Header = ({chosenItem}) => {
+const Header = ({chosenItem, showWaitingOrder, setShowWaitingOrder}) => {
   const[activeShopping, setActiveShopping] = useState(false);
 
   const handleShopClick = () => {
@@ -14,6 +15,18 @@ const Header = ({chosenItem}) => {
       setActiveShopping(true);
     }
   };
+
+  useEffect(() => {
+    if (showWaitingOrder) {
+      const timeoutId = setTimeout(() => {
+        setShowWaitingOrder(false);
+      }, 5000);
+
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
+  }, [showWaitingOrder, setShowWaitingOrder]);
 
     return(
         <div className="lucknow_content-header">
@@ -29,7 +42,13 @@ const Header = ({chosenItem}) => {
                 <img src={Search} />
                 <img src={Shop} onClick={handleShopClick}/>
               </div>
-              {activeShopping ? <Basket chosenItem={chosenItem}/> : null}
+              {activeShopping && !showWaitingOrder 
+              ? <Basket chosenItem={chosenItem}  
+              setShowWaitingOrder={setShowWaitingOrder}
+              setActiveShopping={setActiveShopping}
+              /> 
+              :(showWaitingOrder && <WaitingOder />
+              )}
         </div>
     )
 }

@@ -11,7 +11,8 @@ import GoBackButton from './GoBackButton';
 const BaseHome = () => {
     const [activeItem, setActiveItem] = useState([0]);
     const [sortedItem, setSortedItem] = useState ([]);
-    
+    const [showWaitingOrder, setShowWaitingOrder] = useState(false);
+
     const [chosenItem, setChosenItem] = useState([{
         id: '',
         title: '',
@@ -20,8 +21,6 @@ const BaseHome = () => {
         src: null,
 
     }]);
-
-    console.log('chosenItem', chosenItem)
 
     const addChosenItem = (item) => { 
 
@@ -49,8 +48,6 @@ const BaseHome = () => {
             } 
     }
 
-  
-
     return(
         
         <section className="lucknow">
@@ -62,7 +59,11 @@ const BaseHome = () => {
                     <Menu />
                 </div>
                 <div className="lucknow_content">
-                    <Header chosenItem={chosenItem}/>
+                    <Header 
+                    chosenItem={chosenItem}
+                    showWaitingOrder={showWaitingOrder}
+                    setShowWaitingOrder={setShowWaitingOrder}
+                    />
                     <Filter activeItem={activeItem} click={click}/>
                     <AllItems 
                     sortedItem={sortedItem} 
