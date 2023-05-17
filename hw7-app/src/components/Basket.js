@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Arrow from '../assets/icons/arrow.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleWaitingOrders }from '../redux/reducers/waitingOrdersSlice';
 import '../css/main.css';
 
-export const Basket = ({chosenItem, setShowWaitingOrder, setActiveShopping}) => {
+export const Basket = ({chosenItem, /* setShowWaitingOrder, */ setActiveShopping}) => {
+    const waitingOrders = useSelector( state => state.waitingOrders.waitingOrders);
+    const dispatch = useDispatch();
 
     const [count, setCount] = useState([
         chosenItem.map((item) => ({
@@ -48,7 +52,7 @@ export const Basket = ({chosenItem, setShowWaitingOrder, setActiveShopping}) => 
     };
 
     const handleOderBasket = () => {
-        setShowWaitingOrder(prev => !prev)
+        dispatch (toggleWaitingOrders())
         setActiveShopping(prev => !prev)
         navigate('/');
     }

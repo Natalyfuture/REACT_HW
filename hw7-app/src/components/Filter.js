@@ -1,4 +1,9 @@
 import React from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { setActiveItemFilter } from '../redux/reducers/activeItemFilterSlice';
+import { setSortedItem } from '../redux/reducers/sortedItemSlice';
+import {allItems} from './allItemsConst';
+
 import All from '../assets/images/grilled-chicken.png';
 import Burger from '../assets/images/cartoon-burger.png';
 import Pizza from '../assets/images/pizza 1.png';
@@ -43,7 +48,31 @@ export const filterList = [
 
 ]
 
-const Filter = ({activeItem, click}) => {
+const Filter = () => {
+    const activeItem = useSelector((state) => state.activeItemFilter);
+   /*  const sortedItem = useSelector((state) => state.sortedItem); */
+    const dispatch = useDispatch();
+
+  /*   console.log(sortedItem) */
+   
+    const click = (item) => {
+        
+        dispatch(setActiveItemFilter(filterList.find((x) => x.title === item)));
+        sortingItems( item );
+       
+    }
+
+    function sortingItems (title) {
+        console.log(title)
+
+            if(title === 'All'){
+                dispatch(setSortedItem(allItems))
+            }else{
+                const filteredItems = allItems.filter((item) => item.sort === title);
+                dispatch(setSortedItem(filteredItems));
+            } 
+    }
+
     return(
         <div className="navigation">
               <ul className="navigation_fastfood">

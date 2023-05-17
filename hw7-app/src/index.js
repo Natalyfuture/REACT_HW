@@ -5,13 +5,17 @@ import reportWebVitals from './reportWebVitals';
 import RouterApp from './components/RouterApp';
 import { BrowserRouter as Router} from 'react-router-dom';
 import { AuthProvider } from './components/AuthContext';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <RouterApp />
+        <Provider store={store}>
+          <RouterApp />
+        </Provider>
       </AuthProvider>
     </Router>
   </React.StrictMode>
@@ -21,3 +25,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

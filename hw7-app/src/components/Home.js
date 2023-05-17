@@ -4,14 +4,13 @@ import Header from './Header';
 import Filter from './Filter';
 import AllItems  from './AllItems';
 import '../css/main.css';
-import { filterList } from './Filter';
-import {allItems} from './allItemsConst';
+/* import { filterList } from './Filter';
+ */
 import GoBackButton from './GoBackButton';
 
 const BaseHome = () => {
-    const [activeItem, setActiveItem] = useState([0]);
-    const [sortedItem, setSortedItem] = useState ([]);
-    const [showWaitingOrder, setShowWaitingOrder] = useState(false);
+   /*  const [activeItem, setActiveItem] = useState([0]); */
+   /*  const [sortedItem, setSortedItem] = useState ([]); */
 
     const [chosenItem, setChosenItem] = useState([{
         id: '',
@@ -31,23 +30,7 @@ const BaseHome = () => {
         setChosenItem((prevChosenItems) => prevChosenItems.filter((chosenItem) => chosenItem.id !== item.id));
         }
 
-    const click = (item) => {
-        setActiveItem(filterList.find((x) => x.title === item));
-
-        sortingItems( item );
-       
-    }
-
-    function sortingItems (title) {
-
-            if(title === 'All'){
-                setSortedItem(allItems)
-            }else{
-                const filteredItems = allItems.filter((item) => item.sort === title);
-                setSortedItem(filteredItems);
-            } 
-    }
-
+  
     return(
         
         <section className="lucknow">
@@ -61,12 +44,12 @@ const BaseHome = () => {
                 <div className="lucknow_content">
                     <Header 
                     chosenItem={chosenItem}
-                    showWaitingOrder={showWaitingOrder}
-                    setShowWaitingOrder={setShowWaitingOrder}
+                   /*  showWaitingOrder={showWaitingOrder}
+                    setShowWaitingOrder={setShowWaitingOrder} */
                     />
-                    <Filter activeItem={activeItem} click={click}/>
+                    <Filter /* activeItem={activeItem} */ />
                     <AllItems 
-                    sortedItem={sortedItem} 
+                    /* sortedItem={sortedItem}  */
                     addChosenItem={addChosenItem} 
                     deleteChosenItem={deleteChosenItem}
                     setChosenItem={setChosenItem}  

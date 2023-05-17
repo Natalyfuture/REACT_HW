@@ -1,11 +1,14 @@
 import React from 'react';
+import { useSelector} from "react-redux";
 import Filter from '../assets/icons/filter.svg';
 import '../css/main.css';
 import Article from './Article';
 import { Item } from './Item';
 
-const AllItems = ({sortedItem, addChosenItem, setChosenItem, chosenItem, deleteChosenItem}) => {
+const AllItems = ({addChosenItem, setChosenItem, chosenItem, deleteChosenItem, activeSpan, setActiveSpan}) => {
     
+    const sortedItem = useSelector((state) => state.sortedItem);
+    console.log(sortedItem)
     return(
         <div className="allItems">
             <div className="allItems_container-one">
@@ -14,7 +17,7 @@ const AllItems = ({sortedItem, addChosenItem, setChosenItem, chosenItem, deleteC
                 <img src={Filter} alt="Filter" />
               </div> 
               <div className="allItems_flex">
-                  {sortedItem.map((item) => (
+             {/*  {sortedItem.map((item) => (
                       <div key={item.id} className="allItems_item">
                        <Item 
                        item={item} 
@@ -22,9 +25,11 @@ const AllItems = ({sortedItem, addChosenItem, setChosenItem, chosenItem, deleteC
                        setChosenItem={setChosenItem} 
                        chosenItem={chosenItem} 
                        deleteChosenItem={deleteChosenItem}
-                       />
+                       activeSpan={activeSpan}
+                       setActiveSpan={setActiveSpan}
+                       /> 
                       </div>
-                  ))}
+                  ))} */} 
                </div>
             </div>
             <Article />

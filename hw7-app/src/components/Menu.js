@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { activeItemMenuSlice } from '../redux/reducers/activeItemMenuSlice';
+import { setActiveIndexMenu } from '../redux/reducers/activeItemMenuSlice';
 
 import managerIcon from '../assets/images/manager.png'; 
 import deliveryRuns from '../assets/images/delivery-man-runs.png';
@@ -8,10 +11,12 @@ import '../css/main.css';
 
 
 const Menu = () => {
-    const [active, setActive] = useState(menuList[0]);
+    const activeIndexMenu = useSelector((state) => state.activeItemMenu.activeIndexMenu);
+    const dispatch = useDispatch();
 
     const click = (item) => {
-        setActive(menuList.find((x) => x.name === item));
+        const index = menuList.find((x) => x.name === item);
+        dispatch(setActiveIndexMenu(index));
         
     }
 
@@ -30,7 +35,7 @@ const Menu = () => {
                     {menuList.map(({ name, svgName }) => (
                     <div 
                     key={name} 
-                    className={active.name === name ? 'menu_item menu_item--active' : 'menu_item'}
+                    className={activeIndexMenu.name === name ? 'menu_item menu_item--active' : 'menu_item'}
                     onClick={() => click(name)}
                     >
                         <div className="menu_item_icon">
