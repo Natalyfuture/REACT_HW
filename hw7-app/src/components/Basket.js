@@ -1,38 +1,30 @@
-import React, {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState } from 'react';
 import Arrow from '../assets/icons/arrow.svg';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleWaitingOrders }from '../redux/reducers/waitingOrdersSlice';
 import '../css/main.css';
 
-export const Basket = ({chosenItem, /* setShowWaitingOrder, */ setActiveShopping}) => {
-    const waitingOrders = useSelector( state => state.waitingOrders.waitingOrders);
-    const dispatch = useDispatch();
-
-    const [count, setCount] = useState([
-        chosenItem.map((item) => ({
-            id: item.id,
-            count: 0,
-          }))
-    ]);
-    const navigate = useNavigate();
+export const Basket = ({chosenItem, setShowWaitingOrder, setActiveShopping}) => {
+    
+    const [count, setCount] = useState([]);
 
     const handleMinusClick = (id) => {
-        setCount((prevCounts) => ({
-            ...prevCounts,
-            [id]: (prevCounts[id] || 0) - 1,
-          }));
+        setCount((prevCounts) => {
+          const currentValue = prevCounts[id] || 0;
+          if (currentValue > 0) {
+            return {
+              ...prevCounts,
+              [id]: currentValue - 1,
+            };
+          }
+          return prevCounts;
+        });
+      };
       
-    };
-      
-    
     const handlePlusClick = (id) => {
         setCount((prevCounts) => ({
             ...prevCounts,
             [id]: (prevCounts[id] || 0) + 1,
           }));
     };
-
 
     const handlePrice = (price, count) => {
         if (price) {
@@ -52,9 +44,8 @@ export const Basket = ({chosenItem, /* setShowWaitingOrder, */ setActiveShopping
     };
 
     const handleOderBasket = () => {
-        dispatch (toggleWaitingOrders())
+        setShowWaitingOrder(prev => !prev)
         setActiveShopping(prev => !prev)
-        navigate('/');
     }
 
     return(
@@ -65,7 +56,7 @@ export const Basket = ({chosenItem, /* setShowWaitingOrder, */ setActiveShopping
                     <img className='basket-header_arrow-img' src={Arrow}/>
                 </div>
             </div>
-            {chosenItem.map((item, index) => (
+            {chosenItem && chosenItem.map((item, index) => (
                 index === 0 ? null : (
                 <div className='basket_content' key={item.id}>
                 <div className='basket_wrapper-img'>
@@ -76,8 +67,8 @@ export const Basket = ({chosenItem, /* setShowWaitingOrder, */ setActiveShopping
                     <p className='basket_description-text'>{item.text}</p>
                 </div>
                 <span className='basket_minus' onClick={() => handleMinusClick(item.id)}>-</span>
-                <span className='basket_plus'onClick={() => handlePlusClick(item.id)}>+</span>
                 <span className='basket_quantity'>{count[item.id] || 0}</span>
+                <span className='basket_plus'onClick={() => handlePlusClick(item.id)}>+</span>
                 <span className='basket_price'>${handlePrice(item.price, count[item.id] || 0)}</span>
             </div>
                 )

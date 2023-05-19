@@ -37,22 +37,21 @@ const articleItems = [
 const Article = () => {
     return(
         <div className="article">
-                <div className="article_flex">
-                  <h1>Article</h1>
-                  <div className="article_box">
-                    <div className="know-more_arrow">
-                      <div className="dash"></div>
-                      <p>></p>
-                    </div>
-                  </div>
+            <div className="article_flex">
+              <h1>Article</h1>
+              <div className="article_box">
+                <div className="know-more_arrow">
+                  <div className="dash"></div>
+                  <p>></p>
                 </div>
-                {articleItems.map((item) => (
-                  <div key={item.id} className="article_container">
+              </div>
+            </div>
+              {articleItems.map((item) => (
+                <div key={item.id} className="article_container">
                   <ArticleItem item={item} />
-                  </div>
-                ) )}
+                </div>
+              ) )}
         </div>
-        
     )
 }
 

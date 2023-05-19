@@ -1,9 +1,23 @@
 .menu {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 254px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 80px;
-  margin: 0 auto;
   padding-top: 99px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .menu_manager {
   width: 80px;
@@ -196,36 +210,29 @@
       flex-wrap: wrap;
   background-color: #DEEBFB;
   border-radius: 30px;
-  padding: 50px 60px 50px 35px;
-  margin: 0 200px 0 200px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 150px;
 }
 
 .routerHeader {
-  height: 100px;
-  padding-left: 50px;
   position: relative;
+  top: 20px;
+  left: 50px;
 }
 
-.arrow {
-  max-width: 50px;
-  max-height: 50px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #DEEBFB;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.arrow_wrapper {
-  width: 51px;
-  height: 51px;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-  position: fixed;
-  left: 347px;
-  top: 50px;
-  cursor: pointer;
+.home_wrapper {
+  width: 1440px;
+  height: 972px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .lucknow_content {
@@ -234,9 +241,6 @@
   background-color: #FFFFFF;
   border-radius: 25px;
   padding: 60px 45px 100px 45px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
@@ -688,6 +692,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .form_container {
   width: 578px;
@@ -697,11 +707,20 @@
   padding: 97px 95px 47px 95px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 0 auto;
   margin-top: 17px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.button {
+.button-form {
   width: 163px;
   height: 50px;
   background: #2D9CDB;
@@ -715,11 +734,10 @@
   border: none;
   cursor: pointer;
 }
-.button_container {
-  width: 163px;
+.button-form_container-form {
   display: block;
-  margin: 0 auto;
-  margin-top: 37px;
+  width: 163px;
+  margin: 37px 0 auto;
 }
 
 .link {
@@ -734,9 +752,11 @@
 }
 .link_wrapper {
   width: 131px;
-  display: block;
-  margin: 0 auto;
-  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  margin: 10px 0 47px 0;
 }
 
 .img_grapes {
@@ -938,6 +958,7 @@
   width: 252px;
   height: 50px;
   background: #2D9CDB;
+  border: none;
   border-radius: 15px;
   font-family: "Spartan";
   font-style: normal;
@@ -948,4 +969,131 @@
   position: absolute;
   bottom: 34px;
   right: 31px;
+  cursor: pointer;
+}
+
+.loader {
+  width: 1440px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 30px;
+  background: transparent;
+  z-index: 50;
+  position: absolute;
+}
+.loader_wrapper {
+  position: absolute;
+  top: -150px;
+  left: 0;
+}
+.loader-container {
+  width: 720px;
+  height: 1052px;
+  background: #EAF1FE;
+  border-radius: 30px;
+  position: relative;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.loader-container--active_left {
+  background: rgba(234, 241, 254, 0.7);
+  -webkit-animation-name: slideInLeft;
+          animation-name: slideInLeft;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.loader-container--active_right {
+  background: rgba(234, 241, 254, 0.7);
+  -webkit-animation-name: slideInRight;
+          animation-name: slideInRight;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.loader-content {
+  position: absolute;
+  width: 276px;
+  height: 300px;
+}
+.loader-content_left {
+  right: 0;
+  top: 358px;
+}
+.loader-content_right {
+  left: -123px;
+  top: 358px;
+}
+.loader-content-title {
+  font-family: "Spartan";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 72px;
+  text-align: center;
+}
+.loader-content-text {
+  font-family: "Spartan";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  text-align: center;
+}
+.loader-content-img {
+  width: 247px;
+  height: 230px;
+}
+.loader-content-img-grapes {
+  position: absolute;
+  bottom: -50px;
+  left: -120px;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+.loader-content-img-container {
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+@-webkit-keyframes slideInLeft {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+@keyframes slideInLeft {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes slideInRight {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+}
+@keyframes slideInRight {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
 }

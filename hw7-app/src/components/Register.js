@@ -71,8 +71,8 @@ const Register = () => {
                             errors={errors[item]}
                             />
                         )))}
-                    <div className='button_container'>
-                    <button className='button' type='submit'>Register</button>
+                    <div className='button_container-form'>
+                    <button className='button-form' type='submit'>Register</button>
                     </div>
                 </div>
             </form>   

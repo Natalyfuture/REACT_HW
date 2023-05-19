@@ -14,7 +14,6 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 import '../css/main.css';
 import { AuthContext } from './AuthContext';
-/* import { useCallback} from 'react'; */
 
 const auth = getAuth();
 
@@ -53,7 +52,6 @@ const Auth = () => {
     const onClick = () =>{
             navigate('/register');
         }
-        
 
     const inputData = ['login', 'password']
 
@@ -71,8 +69,6 @@ const Auth = () => {
                     </h1>
                     <img className='title_drooling-face' src={DroolingSmile} alt='DroolingSmile' />
                 </div>
-               
-
                 <form className='form' onSubmit={handleSubmit}>
                     <div className='form_container'>
                             {inputData.map((item => (
@@ -85,14 +81,13 @@ const Auth = () => {
                                 touched={touched[item]}
                                 errors={errors[item]}/>
                             )))}
-                        <div className='button_container'>
-                        <button className='button' type='submit'>Login</button>
-                        <div className='link_wrapper'>
-                        <a className='link' onClick={onClick}>dont have an account</a>
+                         <div className='link_wrapper'>
+                            <a className='link' onClick={onClick}>dont have an account</a>
+                        </div>
+                        <div className='button_container-form'>
+                            <button className='button-form' type='submit'>Login</button>
                         </div>
                     </div>
-                    </div>
-                    
                 </form>   
             </div>
         </section>

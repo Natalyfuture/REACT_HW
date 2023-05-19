@@ -3,13 +3,14 @@ import ActivePlus from '../assets/icons/active_plus.svg';
 import Plus from '../assets/icons/plus .svg';
 import '../css/main.css';
 
-export const Item = ({item, addChosenItem, deleteChosenItem}) => {
- 
-  const [activeSpan, setActiveSpan] = useState(false);
-  
-  const click = () => {
+export const Item = ({item, setChosenItem }) => {
 
-    setActiveSpan(prev => !prev);
+  const [activeSpan, setActiveSpan] = useState(false);
+console.log(activeSpan)
+  
+  const click = (id) => {
+
+   setActiveSpan(prev => !prev);
 
     if(!activeSpan){
 
@@ -21,6 +22,16 @@ export const Item = ({item, addChosenItem, deleteChosenItem}) => {
 
     }
   }
+
+  const addChosenItem = (item) => { 
+    console.log(item)
+
+    setChosenItem((prevChosenItems) => [...prevChosenItems, item]);
+}
+
+  const deleteChosenItem = (item) => {
+  setChosenItem((prevChosenItems) => prevChosenItems.filter((chosenItem) => chosenItem.id !== item.id));
+    }
 
     return (
         <div className="allItems_block">
@@ -34,14 +45,13 @@ export const Item = ({item, addChosenItem, deleteChosenItem}) => {
           </div>
         </div> 
         <div 
-        onClick={click}
+        onClick={() => click(item.id)}
         className="circle"
         >
         {activeSpan 
         ? <img className="plus" src={ActivePlus} />
         : <img className="plus" src={Plus} />
       } 
-        
       </div>
     </div>
     )

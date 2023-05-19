@@ -4,32 +4,20 @@
     flex-wrap: wrap;
     background-color: #DEEBFB;
     border-radius: 30px;
-    padding: 50px 60px 50px 35px;
-    margin: 0 200px 0 200px;
-
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    margin-top: 150px;
 }
 .routerHeader{
-    height: 100px;
-    padding-left: 50px;
     position: relative;
+    top: 20px;
+    left: 50px;
 }
-.arrow{
-    max-width: 50px;
-    max-height: 50px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #DEEBFB;
-    object-fit: cover;
-    &_wrapper{
-        width:51px;
-        height: 51px;
-        border-radius: 50%;
-        overflow: hidden;
-        cursor: pointer;
-        position:fixed;
-        left: 347px;
-        top: 50px;
-        cursor: pointer;
-    }
+.home_wrapper{
+    width: 1440px;
+    height: 972px;
+    margin: 0 auto;
+    position: relative;
 }

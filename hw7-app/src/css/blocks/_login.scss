@@ -28,21 +28,24 @@
 .form{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     &_container{
-    
         width: 578px;
         height: auto;
         background: #FFFFFF;
         border-radius: 35px;
         padding: 97px 95px 47px 95px;
         box-sizing: border-box;
-        margin: 0 auto;
         margin-top: 17px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     
     }
 }
 
-.button{
+.button-form{
     width: 163px;
     height: 50px;
     background: #2D9CDB;
@@ -56,11 +59,10 @@
     border: none;
     cursor: pointer;
    
-    &_container{
-        width: 163px;
+    &_container-form{
         display: block;
-        margin: 0 auto;
-        margin-top: 37px;
+        width: 163px;
+        margin: 37px 0 auto;
     }
 }
 .link{
@@ -74,9 +76,9 @@
     cursor: pointer;
     &_wrapper{
         width: 131px;
-        display: block;
-        margin: 0 auto;
-        margin-top: 10px;
+        display: flex;
+        text-align: center;
+        margin: 10px 0 47px 0;
     }
 }
 .img{

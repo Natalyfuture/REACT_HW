@@ -7,8 +7,9 @@ import '../css/main.css';
 import { WaitingOder } from './WaitingOder';
 
 
-const Header = ({chosenItem, showWaitingOrder, setShowWaitingOrder}) => {
+const Header = ({ showWaitingOrder, setShowWaitingOrder, chosenItem }) => {
   const[activeShopping, setActiveShopping] = useState(false);
+
 
   const handleShopClick = () => {
     if (!activeShopping) {
@@ -19,8 +20,8 @@ const Header = ({chosenItem, showWaitingOrder, setShowWaitingOrder}) => {
   useEffect(() => {
     if (showWaitingOrder) {
       const timeoutId = setTimeout(() => {
-        setShowWaitingOrder(false);
-      }, 5000);
+        setShowWaitingOrder(false) ;
+      }, 3000);
 
       return () => {
         clearTimeout(timeoutId);
@@ -43,9 +44,11 @@ const Header = ({chosenItem, showWaitingOrder, setShowWaitingOrder}) => {
                 <img src={Shop} onClick={handleShopClick}/>
               </div>
               {activeShopping && !showWaitingOrder 
-              ? <Basket chosenItem={chosenItem}  
+              ? <Basket 
+              chosenItem={chosenItem}  
               setShowWaitingOrder={setShowWaitingOrder}
               setActiveShopping={setActiveShopping}
+              showWaitingOrder={showWaitingOrder}
               /> 
               :(showWaitingOrder && <WaitingOder />
               )}

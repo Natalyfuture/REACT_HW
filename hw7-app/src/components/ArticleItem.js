@@ -11,8 +11,7 @@ export const ArticleItem = ({item}) => {
             <img className="article_img_icon" src={item.src} alt="" />
             </div>
             <div className="article_content">
-            <p className="article_content-text">{item.text} 
-            </p>
+                <p className="article_content-text">{item.text}</p>
                 <div className="img_wrapper">
                     <img className="article_content-members_1" src={Ellips12} alt="" />
                 </div>
@@ -25,7 +24,5 @@ export const ArticleItem = ({item}) => {
                 </div>
             </div>
         </>
-        
-    
     )
 }

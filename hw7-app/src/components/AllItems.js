@@ -1,14 +1,13 @@
 import React from 'react';
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import Filter from '../assets/icons/filter.svg';
 import '../css/main.css';
 import Article from './Article';
 import { Item } from './Item';
 
-const AllItems = ({addChosenItem, setChosenItem, chosenItem, deleteChosenItem, activeSpan, setActiveSpan}) => {
+const AllItems = ({ setChosenItem, chosenItem, showWaitingOrder}) => {
+    const sortedItem = useSelector((state) => state.sortedItem.sortedItem);
     
-    const sortedItem = useSelector((state) => state.sortedItem);
-    console.log(sortedItem)
     return(
         <div className="allItems">
             <div className="allItems_container-one">
@@ -17,20 +16,17 @@ const AllItems = ({addChosenItem, setChosenItem, chosenItem, deleteChosenItem, a
                 <img src={Filter} alt="Filter" />
               </div> 
               <div className="allItems_flex">
-             {/*  {sortedItem.map((item) => (
+                {sortedItem.map((item) => (
                       <div key={item.id} className="allItems_item">
                        <Item 
                        item={item} 
-                       addChosenItem={addChosenItem} 
-                       setChosenItem={setChosenItem} 
-                       chosenItem={chosenItem} 
-                       deleteChosenItem={deleteChosenItem}
-                       activeSpan={activeSpan}
-                       setActiveSpan={setActiveSpan}
+                       chosenItem={chosenItem}
+                       setChosenItem={setChosenItem}
+                       showWaitingOrder={showWaitingOrder}
                        /> 
                       </div>
-                  ))} */} 
-               </div>
+                ))}
+              </div>
             </div>
             <Article />
         </div>

@@ -49,11 +49,8 @@ export const filterList = [
 ]
 
 const Filter = () => {
-    const activeItem = useSelector((state) => state.activeItemFilter);
-   /*  const sortedItem = useSelector((state) => state.sortedItem); */
-    const dispatch = useDispatch();
-
-  /*   console.log(sortedItem) */
+    const activeItemFilter = useSelector((state) => state.activeItemFilter.activeItemFilter);
+    const dispatch = useDispatch(); 
    
     const click = (item) => {
         
@@ -63,7 +60,6 @@ const Filter = () => {
     }
 
     function sortingItems (title) {
-        console.log(title)
 
             if(title === 'All'){
                 dispatch(setSortedItem(allItems))
@@ -79,7 +75,7 @@ const Filter = () => {
                 {filterList.map(({id, title, src}) => (
                      <li 
                      key={id} 
-                     className={activeItem.title === title ? "navigation_fastfood-item navigation_fastfood-item--active" : "navigation_fastfood-item"}
+                     className={activeItemFilter.title === title ? "navigation_fastfood-item navigation_fastfood-item--active" : "navigation_fastfood-item"}
                      onClick={() => click(title)}
                      >
                      <div className="img_container">

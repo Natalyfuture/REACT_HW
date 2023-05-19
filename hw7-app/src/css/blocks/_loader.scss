@@ -1,0 +1,90 @@
+.loader{
+    width: 1440px;
+    display: flex;
+    border-radius: 30px;
+    background:transparent;
+    z-index: 50;
+    position: absolute;
+    &_wrapper{
+        position: absolute;
+        top: -150px;
+        left: 0;
+    }
+    &-container{
+        width: 720px;
+        height: 1052px;
+        background: #EAF1FE;
+        border-radius: 30px;
+        position: relative;
+        transition: all 0.5s ease-in-out;
+
+        &--active_left{
+            background: rgba(234, 241, 254, 0.7);
+            animation-name: slideInLeft;
+            animation-duration: 3s; 
+            animation-fill-mode: forwards;
+        }
+        &--active_right{
+            background: rgba(234, 241, 254, 0.7);
+           animation-name: slideInRight;
+           animation-duration: 3s; 
+           animation-fill-mode: forwards;
+        }
+    }
+    
+    &-content{
+        position: absolute;
+        width: 276px;
+        height: 300px;
+        &_left{
+            right: 0;
+            top: 358px;
+        }
+        &_right{
+            left: -123px;
+            top:358px;
+        }
+        &-title{
+            font-family: 'Spartan';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 72px;
+            text-align: center;
+        }
+        &-text{
+            font-family: 'Spartan';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 24px;
+            text-align: center;
+        }
+        &-img{
+            width: 247px;
+            height: 230px;
+            &-grapes{
+                position: absolute;
+                bottom: -50px;
+                left: -120px;
+                transform: rotate(-20deg);
+            }
+            &-container{
+                position: absolute;
+                top: 0;
+                right: 30px;
+
+            }
+        }
+       
+    }
+
+
+   @keyframes slideInLeft {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+        }
+      
+      @keyframes slideInRight {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(100%); }
+    } 
+}
