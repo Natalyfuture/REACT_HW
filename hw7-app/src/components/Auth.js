@@ -81,11 +81,11 @@ const Auth = () => {
                                 touched={touched[item]}
                                 errors={errors[item]}/>
                             )))}
-                         <div className='link_wrapper'>
-                            <a className='link' onClick={onClick}>dont have an account</a>
-                        </div>
                         <div className='button_container-form'>
                             <button className='button-form' type='submit'>Login</button>
+                        </div>
+                        <div className='link_wrapper'>
+                            <a className='link' onClick={onClick}>don't have an account</a>
                         </div>
                     </div>
                 </form>   

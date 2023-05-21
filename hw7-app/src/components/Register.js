@@ -26,7 +26,7 @@ const Register = () => {
             confirmPassword: '',
         },
         validationSchema : Yup.object({
-            login : Yup.string().max(15 , 'Login mus be shorter than 15 characters').required(),
+            login : Yup.string().max(30 , 'Login mus be shorter than 30 characters').required(),
             password : Yup.string().min(8 , 'Password must be longer than 8 characters').required(),
             confirmPassword : Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')

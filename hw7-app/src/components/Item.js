@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ActivePlus from '../assets/icons/active_plus.svg';
 import Plus from '../assets/icons/plus .svg';
 import '../css/main.css';
 
-export const Item = ({item, setChosenItem }) => {
+
+export const Item = ({item, setChosenItem, chosenItem, setActiveShopping, activeShopping}) => {
 
   const [activeSpan, setActiveSpan] = useState(false);
-console.log(activeSpan)
-  
+ 
   const click = (id) => {
-
-   setActiveSpan(prev => !prev);
-
+    setActiveSpan(!activeSpan)
+   setActiveShopping(true)
     if(!activeSpan){
 
-      addChosenItem(item)
+      addChosenItem(item);
 
     }else {
 
@@ -24,7 +23,6 @@ console.log(activeSpan)
   }
 
   const addChosenItem = (item) => { 
-    console.log(item)
 
     setChosenItem((prevChosenItems) => [...prevChosenItems, item]);
 }
@@ -32,6 +30,13 @@ console.log(activeSpan)
   const deleteChosenItem = (item) => {
   setChosenItem((prevChosenItems) => prevChosenItems.filter((chosenItem) => chosenItem.id !== item.id));
     }
+
+    useEffect(() => {
+      if(!activeShopping){
+        setActiveSpan(false);
+      }
+      
+    }, [activeShopping]);
 
     return (
         <div className="allItems_block">
@@ -48,10 +53,10 @@ console.log(activeSpan)
         onClick={() => click(item.id)}
         className="circle"
         >
-        {activeSpan 
-        ? <img className="plus" src={ActivePlus} />
-        : <img className="plus" src={Plus} />
-      } 
+        {activeSpan ?
+          <img className="plus" src={ActivePlus} />
+          : <img className="plus" src={Plus} />
+        } 
       </div>
     </div>
     )

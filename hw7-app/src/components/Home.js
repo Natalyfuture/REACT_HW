@@ -1,21 +1,13 @@
-import React, { useState }  from 'react';
+import { useState }  from 'react';
 import Menu from './Menu';
 import Header from './Header';
 import Filter from './Filter';
 import AllItems  from './AllItems';
 import '../css/main.css';
 
-const BaseHome = () => {
-    const [showWaitingOrder, setShowWaitingOrder] = useState(false)
-
-    const [chosenItem, setChosenItem] = useState([{
-        id: '',
-        title: '',
-        text: '',
-        price: '',
-        src: null,
-
-    }]);
+const BaseHome = ({ setChosenItem, chosenItem}) => {
+    const [showWaitingOrder, setShowWaitingOrder] = useState(false);
+    const[activeShopping, setActiveShopping] = useState(false);
   
     return( 
         <section className="lucknow">
@@ -25,6 +17,8 @@ const BaseHome = () => {
                 </div>
                 <div className="lucknow_content">
                     <Header 
+                    activeShopping={activeShopping}
+                    setActiveShopping={setActiveShopping}
                     chosenItem={chosenItem}
                     setChosenItem={setChosenItem}
                     showWaitingOrder={showWaitingOrder}
@@ -32,6 +26,8 @@ const BaseHome = () => {
                     />
                     <Filter />
                     <AllItems 
+                    activeShopping={activeShopping}
+                    setActiveShopping={setActiveShopping}
                     showWaitingOrder={showWaitingOrder}
                     setChosenItem={setChosenItem}  
                     chosenItem={chosenItem} 

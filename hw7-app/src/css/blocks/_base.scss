@@ -1,14 +1,40 @@
+@import 'mixins';
+
 .container{
+    @include centerElementFlex;
     width: 1440px;
-    display: flex;
     flex-wrap: wrap;
     background-color: #DEEBFB;
     border-radius: 30px;
-    align-items: center;
-    justify-content: center;
     position: relative;
-    box-sizing: border-box;
     margin-top: 150px;
+    @media (max-width: 1440px ) {
+        width: 1170px;
+    }
+    @media (max-width: 1200px ) {
+        width: 1040px;
+        margin-top: 0;
+        padding-bottom: 50px;
+    }
+    
+    @media (max-width: 1090px ) {
+        width: 750px;
+    }
+    
+    @media (max-width: 800px ) {
+        width: 500px;
+    }
+    @media (max-width: 550px ) {
+        width: 458px;
+    }
+    @media (max-width: 480px ) {
+        width: 340px;
+    }
+    @media (max-width: 360px ) {
+        width: 300px;
+    }
+    
+    
 }
 .routerHeader{
     position: relative;
@@ -20,4 +46,27 @@
     height: 972px;
     margin: 0 auto;
     position: relative;
+    @media (max-width: 1440px ) {
+        width: 1170px;
+    }
+    @media (max-width: 1200px ) {
+        width: 1040px;
+    }
+    @media (max-width: 1090px ) {
+        width: 700px;
+    }
+    
+    @media (max-width: 800px ) {
+        width: 500px;
+    }
+    @media (max-width: 550px ) {
+        width: 458px;
+    }
+    @media (max-width: 480px ) {
+        width: 340px;
+    }
+    @media (max-width: 360px ) {
+        width: 300px;
+    }
+    
 }

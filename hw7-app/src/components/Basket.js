@@ -2,7 +2,8 @@ import React, {useState } from 'react';
 import Arrow from '../assets/icons/arrow.svg';
 import '../css/main.css';
 
-export const Basket = ({chosenItem, setShowWaitingOrder, setActiveShopping}) => {
+export const Basket = ({chosenItem, setChosenItem, setShowWaitingOrder, setActiveShopping}) => {
+    
     
     const [count, setCount] = useState([]);
 
@@ -45,8 +46,17 @@ export const Basket = ({chosenItem, setShowWaitingOrder, setActiveShopping}) => 
 
     const handleOderBasket = () => {
         setShowWaitingOrder(prev => !prev)
-        setActiveShopping(prev => !prev)
+        setActiveShopping(false);
+        setChosenItem([{
+            id: '',
+            title: '',
+            text: '',
+            price: '',
+            src: null,
+    
+        }]);
     }
+   
 
     return(
         <div className='basket basket-container'>
@@ -75,7 +85,7 @@ export const Basket = ({chosenItem, setShowWaitingOrder, setActiveShopping}) => 
             ))}
           
                 <div className='basket_container-button'>
-                    <button className='button' onClick={handleOderBasket} >Order -${calculateTotalPrice()} </button>
+                    <button className='button' onClick={handleOderBasket} > {calculateTotalPrice() === 0 ? "Make your choice" : `Order -$${calculateTotalPrice()}`} </button>
                 </div>
         </div>
     )

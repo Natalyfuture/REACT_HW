@@ -5,6 +5,28 @@
     background:transparent;
     z-index: 50;
     position: absolute;
+    @media (max-width: 1440px ) {
+        width: 1170px;
+    }
+    @media (max-width: 1200px ) {
+        width: 1040px;
+    }
+    @media (max-width: 1090px ) {
+        width: 750px;
+    }
+    @media (max-width: 800px ) {
+        width: 500px;
+    }
+    @media (max-width: 550px ) {
+        width: 458px;
+    }
+    @media (max-width: 480px ) {
+        width: 340px;
+    }
+    @media (max-width: 360px ) {
+        width: 300px;
+    }
+    
     &_wrapper{
         position: absolute;
         top: -150px;
@@ -17,6 +39,31 @@
         border-radius: 30px;
         position: relative;
         transition: all 0.5s ease-in-out;
+        @media (min-width: 1440px ) {
+            width: 720px;
+            height: 1042px;
+        }
+        @media (max-width: 1440px ) {
+            width: 585px;
+            height: 1000px;
+        }
+        @media (max-width: 1200px ) {
+            width: 520px;
+            height: 1532px;
+        }
+        @media (max-width: 1090px ) {
+            width: 375px;
+            height: 1593px;
+        }
+        @media (max-width: 800px ) {
+            width: 250px;
+            height: 2255px;
+        }
+        @media (max-width: 550px ) {
+            width: 229px;
+            height: 2515px;
+        }
+
 
         &--active_left{
             background: rgba(234, 241, 254, 0.7);
@@ -39,10 +86,30 @@
         &_left{
             right: 0;
             top: 358px;
+           @media (min-width: 1440px) {
+            top: 358px;
+           }
+           @media (max-width: 1200px) {
+            top: 758px;
+           }
+           @media (max-width: 550px) {
+            top: 1058px;
+           }
+
         }
         &_right{
             left: -123px;
             top:358px;
+            @media (min-width: 1440px) {
+                top: 358px;
+               }
+               @media (max-width: 1200px) {
+                top: 758px;
+               }
+               @media (max-width: 550px) {
+                top: 1058px;
+               }
+     
         }
         &-title{
             font-family: 'Spartan';
@@ -66,11 +133,23 @@
                 bottom: -50px;
                 left: -120px;
                 transform: rotate(-20deg);
+                @media (min-width: 1440px ) {
+                    bottom: 50px;
+                    left: -120px;
+                }
+                @media (max-width: 1200px ) {
+                    bottom: 0;
+                }
+                
             }
             &-container{
                 position: absolute;
                 top: 0;
                 right: 30px;
+                @media (max-width: 1200px ) {
+                    top: -70px;
+                }
+                
 
             }
         }

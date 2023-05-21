@@ -1,16 +1,37 @@
 .allItems{
     margin: 46px 0 5px 0;
     display: flex;
+    @media (max-width: 1090px ) {
+        flex-direction: column;
+        width: 500px;
+    }
+    @media (max-width: 1090px ) {
+        margin: 46px 0 20px 0;
+    }
+    
     &_container-one{
         margin-right: 72px;
+        @media (max-width: 1440px ) {
+            margin-right: 12px;
+        }
+        @media (max-width: 550px) {
+            margin-right: 12px;
+
+        }
+        
     }
 
     &_title{
         display: flex;
         justify-content: space-between;
-        width: 172px;
+        width: 13px;
         height: 27px;
         align-items: center;
+        @media (max-width: 1090px ) {
+            width: 63px;
+            
+        }
+        
     }
     &_flex{
         width: 755px;
@@ -19,6 +40,18 @@
         justify-content: space-between;
         height: calc(40vh - 100px);
         overflow-y: auto;
+        @media (max-width: 1440px ) {
+            width: 670px;
+            height: calc(35vh - 90px);
+        }
+        @media (max-width: 1090px ) {
+            width: 478px;
+            height: calc(25vh - 90px);
+        }
+        @media (max-width: 800px) {
+            width: 397px;
+            height: calc(28vh - 90px);
+        }
     }
     &_item{
         width: 200px;
@@ -31,6 +64,20 @@
         margin: 13px 26px 30px 0;
         text-align: center;
         box-sizing: border-box;
+        @media (max-width: 1440px ) {
+            width: 177px;
+            padding: 40px 0 0 0;
+            margin: -7px 26px -40px 0;
+        }
+        @media (max-width: 1090px ) {
+            width: 125px;
+            margin: 46px 0 5px 0;
+        }
+        @media (max-width: 550px) {
+            width: 150px;
+            margin: 46px 0 -92px 0;
+
+        }
 
     }
     &_block{
@@ -38,12 +85,24 @@
         border-radius: 30px;
         background-color: #F2EEEE;
         text-align: left;
-        padding: 86px 40px 6px 31px;
+        padding: 125px 40px 37px 31px;
         box-sizing: border-box;
         position: relative;
+        @media (max-width: 800px) {
+            width: 170px;
+
+        }
+        @media (max-width: 550px) {
+            width: 152px;
+
+        }
     }
     &_content{
         width: 160px;
+        @media (max-width: 800px) {
+            width: 145px;
+
+        }
         
     }
     &_title{
@@ -89,12 +148,16 @@
 } 
 .img_box{
     position: absolute;
-    width: 121px;
-    height: auto;
-    top: -27px;
-    right: -5px;
+    width: 120px;
+    height: 120px;
+    top: -43px;
+    right: -21px;
+    @media (max-width: 1440px) {
+        top: -2px;
+        right: 5px;
+    }
 }
 .img_top{
-    width: 100%;
-    height: auto;
+    width: 120px;
+    height: 120px;
 }

@@ -1,10 +1,22 @@
 .navigation{
     display: flex;
     margin-top: 27px;
+    @media (max-width: 800px) {
+        flex-direction: column-reverse;
+    }
     &_fastfood{
        list-style: none;
        display: flex;
        margin: 0;
+       @media (max-width: 1090px ) {
+       display: grid;
+       grid-template-columns: repeat(3 , 1fr);
+       gap: 25px;
+    }
+    @media (max-width: 550px ) {
+        grid-template-columns: repeat(2 , 1fr);
+        gap: 25px;
+     }
 
         &-item{
             width: 100px;
@@ -15,6 +27,9 @@
             padding: 25px 10px 25px 10px;
             box-sizing: border-box;
             cursor: pointer;
+            @media (max-width: 1090px) {
+                width: 110px;
+            }
             &--active{
                 background-color: #FFFFFF;
                 border: 1px solid #F3F3F3;

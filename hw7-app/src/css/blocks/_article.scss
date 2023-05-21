@@ -1,9 +1,18 @@
 .article{
     width: 259px;
+    @media (max-width: 1440px ) {
+        width: 172px;
+    }
+    @media (max-width: 1090px ) {
+       display: none;
+    }
     &_flex{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        @media (max-width: 1440px ) {
+            margin-bottom: 20px;
+        }
     }
     &_box{
         width: 50px;
@@ -32,6 +41,7 @@
         box-sizing: border-box;
         text-align: center;
         padding: 10px;
+        margin-right: 10px;
         &-yellow{
             background-color: #FFF0A5;
         }

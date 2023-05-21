@@ -56,7 +56,6 @@ const Filter = () => {
         
         dispatch(setActiveItemFilter(filterList.find((x) => x.title === item)));
         sortingItems( item );
-       
     }
 
     function sortingItems (title) {
@@ -66,7 +65,9 @@ const Filter = () => {
             }else{
                 const filteredItems = allItems.filter((item) => item.sort === title);
                 dispatch(setSortedItem(filteredItems));
+                
             } 
+    
     }
 
     return(

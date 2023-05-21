@@ -3,6 +3,7 @@ import FreezeChicken from '../assets/images/freeze-chicken.png';
 import MaskedSmile from '../assets/images/maskedSmiley.png';
 import Cookie from '../assets/images/cookie.png';
 import PizzaEmoji from '../assets/images/favorite-pizza-emoji.png';
+import Arrow from '../assets/icons/arrow.svg';
 import { ArticleItem } from './ArticleItem';
 import '../css/main.css';
 
@@ -41,8 +42,7 @@ const Article = () => {
               <h1>Article</h1>
               <div className="article_box">
                 <div className="know-more_arrow">
-                  <div className="dash"></div>
-                  <p>></p>
+                  <img src={Arrow} />
                 </div>
               </div>
             </div>

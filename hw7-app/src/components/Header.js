@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Face from '../assets/images/drooling-face-emoji.png';
 import Search from '../assets/icons/search.svg';
 import Shop from '../assets/icons/shop.svg';
+import ArrowCyrcle from '../assets/icons/arrow_circle.svg'
 import { Basket } from './Basket';
 import '../css/main.css';
 import { WaitingOder } from './WaitingOder';
 
 
-const Header = ({ showWaitingOrder, setShowWaitingOrder, chosenItem }) => {
-  const[activeShopping, setActiveShopping] = useState(false);
-
+const Header = ({ showWaitingOrder, setShowWaitingOrder, chosenItem, activeShopping, setActiveShopping, setChosenItem }) => {
 
   const handleShopClick = () => {
     if (!activeShopping) {
@@ -40,12 +39,15 @@ const Header = ({ showWaitingOrder, setShowWaitingOrder, chosenItem }) => {
                 </div>
               </div>
               <div className="icons">
-                <img src={Search} />
                 <img src={Shop} onClick={handleShopClick}/>
+                <img src={Search} />
+                <img className='icons_arrow-cyrcle' src={ArrowCyrcle} />
+                
               </div>
               {activeShopping && !showWaitingOrder 
               ? <Basket 
               chosenItem={chosenItem}  
+              setChosenItem={setChosenItem}
               setShowWaitingOrder={setShowWaitingOrder}
               setActiveShopping={setActiveShopping}
               showWaitingOrder={showWaitingOrder}

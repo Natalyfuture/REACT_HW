@@ -4,6 +4,7 @@ import { setActiveIndexMenu } from '../redux/reducers/activeItemMenuSlice';
 
 import managerIcon from '../assets/images/manager.png'; 
 import deliveryRuns from '../assets/images/delivery-man-runs.png';
+import Arrow from '../assets/icons/arrow.svg'
 import { menuList } from './menuList';
 import { Icon } from './Icon';
 import '../css/main.css';
@@ -52,8 +53,7 @@ const Menu = () => {
                         <div className="know-more">
                             <p className="know-more_text">Know More</p>
                             <div className="know-more_arrow">
-                                <div className="dash"></div>
-                                <p>></p>
+                                <img src={Arrow} />
                             </div>
                         </div>
                     </div>

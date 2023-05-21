@@ -23,6 +23,15 @@ const RouterApp = () => {
 
     const { currentUser} = React.useContext(AuthContext)
     const [loaderOff, setLoaderOff] = useState(false);
+    const [chosenItem, setChosenItem] = useState([{
+        id: '',
+        title: '',
+        text: '',
+        price: '',
+        src: null,
+
+    }]);
+  
 
     return(
         <>
@@ -32,7 +41,7 @@ const RouterApp = () => {
                 element={
                     <PrivateRoute>
                         <div className='home_wrapper'>
-                            <BaseHome />
+                            <BaseHome chosenItem={chosenItem} setChosenItem={setChosenItem} />
                             <div className='loader_wrapper'>
                                 {!loaderOff &&  
                                 <Loader loaderOff={loaderOff}  setLoaderOff={setLoaderOff}/>
@@ -41,7 +50,7 @@ const RouterApp = () => {
                         </div> 
                     </PrivateRoute>
                    } 
-            />     
+            />
             <Route path='/register' element={<Register />} />
             <Route 
             path='/login' 

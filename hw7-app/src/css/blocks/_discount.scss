@@ -7,6 +7,13 @@
     box-sizing: border-box;
     margin: 0 auto;
     position: relative;
+    @media (max-width: 1440px) {
+        width: 160px;
+        padding: 55px 0 31px 22px;
+    }
+    @media (max-width: 800px) {
+        margin-bottom: 10px;
+    }
     &_text-title{
         font-family: 'Spartan';
         font-style: normal;
