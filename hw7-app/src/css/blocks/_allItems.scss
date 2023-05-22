@@ -45,13 +45,18 @@
             height: calc(35vh - 90px);
         }
         @media (max-width: 1090px ) {
-            width: 478px;
+            width: 600px;
             height: calc(25vh - 90px);
         }
         @media (max-width: 800px) {
             width: 397px;
             height: calc(28vh - 90px);
         }
+        @media (max-width: 550px) {
+            width: 370px;
+    
+        }
+        
     }
     &_item{
         width: 200px;
@@ -70,7 +75,7 @@
             margin: -7px 26px -40px 0;
         }
         @media (max-width: 1090px ) {
-            width: 125px;
+            width: 193px;
             margin: 46px 0 5px 0;
         }
         @media (max-width: 550px) {
@@ -93,7 +98,7 @@
 
         }
         @media (max-width: 550px) {
-            width: 152px;
+            width: 167px;
 
         }
     }
