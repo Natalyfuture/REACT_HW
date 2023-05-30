@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext }  from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import Grapes from '../assets/images/grapes.png';
 import Leaf from '../assets/images/leaf.png';
@@ -10,14 +10,16 @@ import * as Yup from 'yup';
 
 import { Input } from './Input';
 
-import '../css/main.css';
-import { useNave } from '../hooks/useNav';
+import { useNav } from '../hooks/useNav';
 import app from './base';
+import { AuthContext } from './AuthContext';
 
 const auth = getAuth();
 
-const Register = () => {
-    const { goTo} = useNave();
+const Register = ({setLoaderOff}) => {
+    const { goTo} = useNav();
+    
+    const { setCurrentUser } = useContext(AuthContext);
 
     const{ handleSubmit, handleChange, values , touched, errors, handleBlur } = useFormik({
         initialValues: {
@@ -33,13 +35,15 @@ const Register = () => {
             .required('Please confirm your password')
         }),
         onSubmit: async (values) => { 
-                console.log(values)
                 try{
                     await createUserWithEmailAndPassword(auth, values.login, values.password);
-                    goTo('/login')
+                    setCurrentUser(values.login);
+                    goTo('/login');
                 }catch (error){
-                    console.error(error)
-                }   
+                    alert('Enter the correct password')
+                }  finally {
+                    setLoaderOff(false); // Після завершення реєстрації повертаємо значення loading на false
+                  }  
         }
     })
 

@@ -4,7 +4,6 @@ import Cheese from '../assets/images/cheese .png';
 import BittenApple from '../assets/icons/bitten-apple.svg';
 import Fire from '../assets/icons/fire.svg';
 import Orange from '../assets/icons/orange.svg';
-import '../css/main.css';
 
 const Discount = () => {
     return(

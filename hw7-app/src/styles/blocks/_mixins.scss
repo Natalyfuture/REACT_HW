@@ -4,3 +4,8 @@
     justify-content: center;
     box-sizing: border-box;
 }
+
+@mixin widthHeight {
+    max-width: 100%vh;
+    max-height: 100%vh;
+}

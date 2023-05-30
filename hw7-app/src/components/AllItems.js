@@ -1,27 +1,26 @@
 import { useLayoutEffect, useRef } from 'react';
 import { useSelector } from "react-redux";
 import Filter from '../assets/icons/filter.svg';
-import '../css/main.css';
 import Article from './Article';
 import { Item } from './Item';
 
 const AllItems = ({ setChosenItem, chosenItem, showWaitingOrder, activeShopping, setActiveShopping }) => {
-    const sortedItem = useSelector((state) => state.sortedItem.sortedItem);
+    const sortedItems = useSelector((state) => state.sortedItem.sortedItem);
     const allItemsRef = useRef(null);
 
     useLayoutEffect(() => {
       allItemsRef.current.scrollTop = 0;
-    }, [sortedItem]);
+    }, [sortedItems]);
 
     return(
         <div className="allItems" >
             <div className="allItems_container-one">
-              <div className="allItems_title">
-                <h1>All Items</h1>
+              <div className="allItems_title-wrapper">
+                <h1 className='allItems_title'>All Items</h1>
                 <img src={Filter} alt="Filter" />
               </div> 
               <div className="allItems_flex" ref={allItemsRef}>
-                {sortedItem.map((item) => (
+                {sortedItems.map((item) => (
                       <div key={item.id} className="allItems_item">
                        <Item 
                        item={item} 

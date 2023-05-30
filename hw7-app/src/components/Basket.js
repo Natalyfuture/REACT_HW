@@ -1,15 +1,16 @@
 import React, {useState } from 'react';
 import Arrow from '../assets/icons/arrow.svg';
-import '../css/main.css';
 
 export const Basket = ({chosenItem, setChosenItem, setShowWaitingOrder, setActiveShopping}) => {
     
     
-    const [count, setCount] = useState([]);
+    const [count, setCount] = useState({1 : 1});
+    console.log(count)
+    console.log(chosenItem)
 
     const handleMinusClick = (id) => {
         setCount((prevCounts) => {
-          const currentValue = prevCounts[id] || 0;
+          const currentValue = prevCounts[id] || 1;
           if (currentValue > 0) {
             return {
               ...prevCounts,
@@ -19,13 +20,19 @@ export const Basket = ({chosenItem, setChosenItem, setShowWaitingOrder, setActiv
           return prevCounts;
         });
       };
-      
-    const handlePlusClick = (id) => {
-        setCount((prevCounts) => ({
-            ...prevCounts,
-            [id]: (prevCounts[id] || 0) + 1,
-          }));
-    };
+
+      const handlePlusClick = (id) => {
+        setCount((prevCounts) => {
+          const currentValue = prevCounts[id] || 1;
+          if (typeof currentValue === 'number' && !isNaN(currentValue)) {
+            return {
+              ...prevCounts,
+              [id]: currentValue + 1,
+            };
+          }
+          return prevCounts;
+        });
+      };
 
     const handlePrice = (price, count) => {
         if (price) {
@@ -38,10 +45,13 @@ export const Basket = ({chosenItem, setChosenItem, setShowWaitingOrder, setActiv
     }
       
     const calculateTotalPrice = () => {
-        return chosenItem.reduce((total, item) => {
-          const itemPrice = handlePrice(item.price, count[item.id] || 0);
-          return total + itemPrice;
+        if (chosenItem) {
+            return chosenItem.reduce((total, item) => {
+              const itemPrice = handlePrice(item.price, count[item.id] || 1);
+              return total + itemPrice;
         }, 0);
+    }
+    return 0;
     };
 
     const handleOderBasket = () => {
@@ -49,20 +59,24 @@ export const Basket = ({chosenItem, setChosenItem, setShowWaitingOrder, setActiv
         setActiveShopping(false);
         setChosenItem([{
             id: '',
-            title: '',
-            text: '',
             price: '',
-            src: null,
-    
+            sort: '',
+            src: '',
+            text: '',
+            title: '',
+
         }]);
-    }
+    };
    
+    const handleExitBasket = () => {
+        setActiveShopping(false);
+    }
 
     return(
         <div className='basket basket-container'>
             <div className='basket-header'>
                 <h1 className='basket-header-title'>Basket</h1>
-                <div className='basket-header_arrow-container'>
+                <div className='basket-header_arrow-container' onClick={handleExitBasket}>
                     <img className='basket-header_arrow-img' src={Arrow}/>
                 </div>
             </div>
@@ -77,15 +91,15 @@ export const Basket = ({chosenItem, setChosenItem, setShowWaitingOrder, setActiv
                     <p className='basket_description-text'>{item.text}</p>
                 </div>
                 <span className='basket_minus' onClick={() => handleMinusClick(item.id)}>-</span>
-                <span className='basket_quantity'>{count[item.id] || 0}</span>
+                <span className='basket_quantity'>{count[item.id] || 1}</span>
                 <span className='basket_plus'onClick={() => handlePlusClick(item.id)}>+</span>
-                <span className='basket_price'>${handlePrice(item.price, count[item.id] || 0)}</span>
+                <span className='basket_price'>${handlePrice(item.price, count[item.id] || 1)}</span>
             </div>
                 )
             ))}
           
                 <div className='basket_container-button'>
-                    <button className='button' onClick={handleOderBasket} > {calculateTotalPrice() === 0 ? "Make your choice" : `Order -$${calculateTotalPrice()}`} </button>
+                    <button className='button' onClick={handleOderBasket} > { `Order -$${calculateTotalPrice()}`} </button>
                 </div>
         </div>
     )

@@ -1,11 +1,10 @@
-import React from 'react';
+import {memo} from 'react';
 import FreezeChicken from '../assets/images/freeze-chicken.png';
 import MaskedSmile from '../assets/images/maskedSmiley.png';
 import Cookie from '../assets/images/cookie.png';
 import PizzaEmoji from '../assets/images/favorite-pizza-emoji.png';
 import Arrow from '../assets/icons/arrow.svg';
 import { ArticleItem } from './ArticleItem';
-import '../css/main.css';
 
 const articleItems = [
   {
@@ -36,17 +35,20 @@ const articleItems = [
 
 
 const Article = () => {
+  const screenWidth = window.innerWidth;
+  const renderItems = screenWidth <= 800 ? articleItems.slice(0, 2) : articleItems;
+
     return(
         <div className="article">
             <div className="article_flex">
-              <h1>Article</h1>
+              <h1 className='article_title'>Article</h1>
               <div className="article_box">
                 <div className="know-more_arrow">
                   <img src={Arrow} />
                 </div>
               </div>
             </div>
-              {articleItems.map((item) => (
+              {renderItems.map((item) => (
                 <div key={item.id} className="article_container">
                   <ArticleItem item={item} />
                 </div>
@@ -55,4 +57,4 @@ const Article = () => {
     )
 }
 
-export default Article;
+export default memo(Article);

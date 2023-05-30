@@ -2,37 +2,38 @@
 
 .login_container{
     position: relative;
-    width: 1440px;
+    max-width: 100vw;
+    max-height: 100vh;
     background-color: #DEEBFB;
     border-radius: 30px;
-    padding: 101px 0 248px 0;
+    padding: 101px 0 265px 0;
     margin: 0 auto;
 
     @media (max-width: 1440px) {
-        width: 1140px;
+        max-width: 100vw;
     } 
 
     @media (max-width: 1200px) {
-        width: 1040px;
+        max-width: 100vw;
     }  
     
     @media (max-width: 1090px) {
-        width: 750px;
+        max-width: 100vw;
     } 
     @media (max-width: 800px) {
-        width: 500px;
+        max-width: 100vw;
     } 
     @media (max-width: 550px) {
-        width: 458px;
+        max-width: 100vw;
     } 
     @media (max-width: 480px) {
-        width: 340px;
+        max-width: 100vw;
     } 
     @media (max-width: 360px) {
-        width: 300px;
+        max-width: 100vw;
     } 
     @media (max-width: 320px) {
-        width: 290px;
+        max-width: 100vw;
     } 
 
 }
@@ -47,32 +48,14 @@
     margin: 0 auto;
     &_wrapper{
         position: relative;
+        width: 320px;
+        display: block;
+        margin: 0 auto;
     }
     &_drooling-face{
         position: absolute;
         top: 70px;
-        right:570px;
-        @media (max-width: 1440px ) {
-            right:419px;
-        }
-        @media (max-width: 1200px ) {
-            right:368px;
-        }
-        @media (max-width: 1090px ) {
-            right:221px;
-        }
-        @media (max-width: 800px ) {
-            right:90px;
-        }
-        @media (max-width: 550px) {
-            right:78px;
-        } 
-        @media (max-width: 480px) {
-            right:19px;
-        }
-        @media (max-width: 360px) {
-            display: none;
-        }
+        right:4px;
     }
 }
 .form{
@@ -97,6 +80,7 @@
         }
         @media (max-width: 360px) {
             width: 266px;
+            padding: 97px 65px 47px 81px;
         }
     }
 }
@@ -176,8 +160,16 @@
     height: 50px;
     box-sizing: border-box;
     background: #F3F3F3;
+    border: none;
     border-radius: 15px;
     margin-bottom: 37px;
+    padding-left: 13px;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 18px;
+    color: #CC9696;
     @media (max-width: 1090px) {
         width: 335px;
     } 
@@ -188,16 +180,20 @@
         width: 265px;
     }
     @media (max-width: 360px ) {
-        width: 250px;
+        width: 230px;
     }
-    
     
     &_wrapper{
         width: 389px;
         height: 50px;
         position:relative;
         display: block;
-        margin-bottom: 40px;
+        font-family: 'Spartan';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom:40px;
         @media (max-width: 1090px) {
             width: 335px;
         } 
@@ -212,6 +208,7 @@
         }
         
     }
+   
 }
 .errors{
     position: absolute;

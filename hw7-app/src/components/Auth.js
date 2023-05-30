@@ -1,5 +1,4 @@
 import React, { useContext}from 'react';
-import { useNavigate } from 'react-router-dom';
 import Grapes from '../assets/images/grapes.png';
 import Leaf from '../assets/images/leaf.png';
 import Orange from '../assets/icons/orange.svg';
@@ -10,16 +9,16 @@ import * as Yup from 'yup';
 
 import { Input } from './Input'; 
 import app from './base';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNav } from '../hooks/useNav';
 
-import '../css/main.css';
 import { AuthContext } from './AuthContext';
 
 const auth = getAuth();
 
 const Auth = () => {
     const { setCurrentUser} = useContext(AuthContext);
-    const navigate = useNavigate();
+   const {goTo} = useNav();
 
 
     const{ handleSubmit, handleChange, values, handleBlur, touched, errors} = useFormik({
@@ -28,7 +27,7 @@ const Auth = () => {
             password: '',
         },
         validationSchema : Yup.object({
-            login : Yup.string().max(15 , 'Login mus be shorter than 15 characters').required(),
+            login : Yup.string().max(30 , 'Login mus be shorter than 30 characters').required(),
             password : Yup.string().min(8 , 'Password must be longer than 8 characters').required(),
         }),
         onSubmit: async (values) => {
@@ -38,7 +37,8 @@ const Auth = () => {
                     const user = userCredential.user;
 
                    if(user) {
-                    setCurrentUser(user)
+                    setCurrentUser(user);
+                    localStorage.setItem('user', JSON.stringify(user));
                    }
                 })
                 .catch((error) => {
@@ -50,7 +50,7 @@ const Auth = () => {
     });
 
     const onClick = () =>{
-            navigate('/register');
+            goTo('/register');
         }
 
     const inputData = ['login', 'password']

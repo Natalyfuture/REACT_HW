@@ -4,17 +4,25 @@ import Search from '../assets/icons/search.svg';
 import Shop from '../assets/icons/shop.svg';
 import ArrowCyrcle from '../assets/icons/arrow_circle.svg'
 import { Basket } from './Basket';
-import '../css/main.css';
 import { WaitingOder } from './WaitingOder';
+import { useNav } from '../hooks/useNav';
 
 
-const Header = ({ showWaitingOrder, setShowWaitingOrder, chosenItem, activeShopping, setActiveShopping, setChosenItem }) => {
+const Header = ({ showWaitingOrder, setShowWaitingOrder, chosenItem, activeShopping, setActiveShopping, setChosenItem}) => {
+  const {goTo} = useNav();
+
 
   const handleShopClick = () => {
     if (!activeShopping) {
       setActiveShopping(true);
     }
   };
+
+  const exitHome = () => {
+    localStorage.setItem('user', null)
+   
+    goTo('/register')
+  }
 
   useEffect(() => {
     if (showWaitingOrder) {
@@ -41,8 +49,9 @@ const Header = ({ showWaitingOrder, setShowWaitingOrder, chosenItem, activeShopp
               <div className="icons">
                 <img src={Shop} onClick={handleShopClick}/>
                 <img src={Search} />
-                <img className='icons_arrow-cyrcle' src={ArrowCyrcle} />
-                
+                <div className='icons_arrow-container'>
+                  <img className='icons_arrow-cyrcle' onClick={exitHome} src={ArrowCyrcle} />
+                </div>
               </div>
               {activeShopping && !showWaitingOrder 
               ? <Basket 
@@ -59,3 +68,4 @@ const Header = ({ showWaitingOrder, setShowWaitingOrder, chosenItem, activeShopp
 }
 
 export default Header;
+

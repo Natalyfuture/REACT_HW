@@ -2,7 +2,6 @@ import React from 'react';
 import Ellips12 from '../assets/images/Ellipse 12.png';
 import Ellips13 from '../assets/images/Ellipse 13.png';
 import OK from '../assets/images/OK.png';
-import '../css/main.css';
 
 export const ArticleItem = ({item}) => {
     return (

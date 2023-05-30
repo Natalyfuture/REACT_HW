@@ -1,28 +1,29 @@
-import React, {useState} from 'react'; 
+import {useState, useContext} from 'react'; 
 import { Routes, Route , Navigate} from "react-router-dom";
 import BaseHome from './Home';
 import Auth from '../components/Auth';
 import Register from '../components/Register';
 import { Loader } from './Loader';
+import BurgerMenu from './BurgerMenu';
 
-import '../css/main.css';
+
 import { AuthContext } from './AuthContext';
 
 
 
 const PrivateRoute = ({children}) => {
-    let { currentUser} = React.useContext(AuthContext);
-
+    let { currentUser} = useContext(AuthContext);
     if(currentUser === null){
         return <Navigate to='/login' />;
     }
     return children;
-}
+}   
 
 const RouterApp = () => {
 
-    const { currentUser} = React.useContext(AuthContext)
+    const { currentUser} = useContext(AuthContext);
     const [loaderOff, setLoaderOff] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
     const [chosenItem, setChosenItem] = useState([{
         id: '',
         title: '',
@@ -32,7 +33,6 @@ const RouterApp = () => {
 
     }]);
   
-
     return(
         <>
         <Routes>
@@ -40,22 +40,23 @@ const RouterApp = () => {
                 path='/' 
                 element={
                     <PrivateRoute>
-                        <div className='home_wrapper'>
-                            <BaseHome chosenItem={chosenItem} setChosenItem={setChosenItem} />
-                            <div className='loader_wrapper'>
-                                {!loaderOff &&  
-                                <Loader loaderOff={loaderOff}  setLoaderOff={setLoaderOff}/>
-                                }
-                            </div>
-                        </div> 
+                             <div className='home_wrapper'>
+                             <BaseHome chosenItem={chosenItem} setChosenItem={setChosenItem} />
+                             <div className='loader_wrapper'>
+                                 {!loaderOff &&  
+                                 <Loader loaderOff={loaderOff}  setLoaderOff={setLoaderOff}/>
+                                 }
+                             </div>
+                         </div> 
                     </PrivateRoute>
                    } 
             />
-            <Route path='/register' element={<Register />} />
+            <Route path='/register' element={<Register setLoaderOff={setLoaderOff}/>} />
             <Route 
             path='/login' 
             element={currentUser ? <Navigate to='/' /> : <Auth />} />
-            <Route path='/loader' element={<Loader />} />
+            
+            <Route path='/burgerMenu' element={<BurgerMenu  />} /> 
 
             <Route path='*' element={<Navigate to='/login' />} />
         </Routes>
@@ -65,3 +66,4 @@ const RouterApp = () => {
 }
 
 export default RouterApp;
+

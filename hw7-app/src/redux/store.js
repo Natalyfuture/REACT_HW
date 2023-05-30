@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import activeItemMenuReducer from './reducers/activeItemMenuSlice';
-import activeItemFilterReducer from './reducers/activeItemFilterSlice';
+import activeItemMenuReducer from './reducers/menuSlice';
+import activeItemFilterReducer from './reducers/filterSlice';
 import sortedItemReducer from './reducers/sortedItemSlice' ;
 
 

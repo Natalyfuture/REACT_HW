@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { setActiveItemFilter } from '../redux/reducers/activeItemFilterSlice';
+import { setActiveItemFilter } from '../redux/reducers/filterSlice';
 import { setSortedItem } from '../redux/reducers/sortedItemSlice';
 import {allItems} from './allItemsConst';
 
@@ -10,8 +10,8 @@ import Pizza from '../assets/images/pizza 1.png';
 import Salads from '../assets/images/fresh-salad.png';
 import Donut from '../assets/images/delicious-donut.png';
 import Drinks from '../assets/images/drinks.png';
-import '../css/main.css';
 import Discount from './Discount';
+
 
 
 export const filterList = [
@@ -52,8 +52,12 @@ const Filter = () => {
     const activeItemFilter = useSelector((state) => state.activeItemFilter.activeItemFilter);
     const dispatch = useDispatch(); 
    
+    if(activeItemFilter.length === 0){
+        dispatch(setSortedItem(allItems));
+        dispatch(setActiveItemFilter({title:'All'}))
+    };
+
     const click = (item) => {
-        
         dispatch(setActiveItemFilter(filterList.find((x) => x.title === item)));
         sortingItems( item );
     }
@@ -69,7 +73,7 @@ const Filter = () => {
             } 
     
     }
-
+    
     return(
         <div className="navigation">
               <ul className="navigation_fastfood">

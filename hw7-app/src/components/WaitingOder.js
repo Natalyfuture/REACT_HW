@@ -1,6 +1,5 @@
 import React from 'react';
 import StopWatch from '../assets/icons/stopwatch.svg';
-import '../css/main.css';
 
 export const WaitingOder = () => {
     return (

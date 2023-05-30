@@ -1,20 +1,39 @@
-import { useState }  from 'react';
+import { useState, useEffect }  from 'react';
 import Menu from './Menu';
 import Header from './Header';
 import Filter from './Filter';
 import AllItems  from './AllItems';
-import '../css/main.css';
+import BurgerMenu from './BurgerMenu';
 
 const BaseHome = ({ setChosenItem, chosenItem}) => {
     const [showWaitingOrder, setShowWaitingOrder] = useState(false);
     const[activeShopping, setActiveShopping] = useState(false);
+    const [burgerAppearance, setBurgerAppearance] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+          setBurgerAppearance(window.innerWidth <= 1090);
+        };
+    
+        window.addEventListener('resize', handleResize);
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
   
     return( 
         <section className="lucknow">
             <div className="container">
-                <div className="menu">
+               
+                {!burgerAppearance ? 
+                (
+                    <div className="menu">
                     <Menu />
-                </div>
+                </div> 
+                ) : (
+                    <BurgerMenu />
+                )          
+                }
                 <div className="lucknow_content">
                     <Header 
                     activeShopping={activeShopping}

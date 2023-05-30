@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import ActivePlus from '../assets/icons/active_plus.svg';
 import Plus from '../assets/icons/plus .svg';
-import '../css/main.css';
 
 
 export const Item = ({item, setChosenItem, chosenItem, setActiveShopping, activeShopping}) => {
@@ -41,10 +40,10 @@ export const Item = ({item, setChosenItem, chosenItem, setActiveShopping, active
     return (
         <div className="allItems_block">
         <div className="allItems_content">
-          <h4 className="allItem_title" >{item.title}</h4>
-          <p className="allItem_text">{item.text}
+          <h4 className="allItems_content-title" >{item.title}</h4>
+          <p className="allItems_content-text">{item.text}
           </p>
-          <p className="allItem_price">{item.price}</p>
+          <p className="allItems_content-price">{item.price}</p>
           <div className="img_box">
             <img className="img_top" src={item.src} />
           </div>

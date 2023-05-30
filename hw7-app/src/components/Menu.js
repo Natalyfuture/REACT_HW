@@ -1,22 +1,25 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setActiveIndexMenu } from '../redux/reducers/activeItemMenuSlice';
+import { setActiveIndexMenu } from '../redux/reducers/menuSlice';
 
 import managerIcon from '../assets/images/manager.png'; 
 import deliveryRuns from '../assets/images/delivery-man-runs.png';
 import Arrow from '../assets/icons/arrow.svg'
 import { menuList } from './menuList';
 import { Icon } from './Icon';
-import '../css/main.css';
 
 
 const Menu = () => {
     const activeIndexMenu = useSelector((state) => state.activeItemMenu.activeIndexMenu);
     const dispatch = useDispatch();
+    if(activeIndexMenu === 0){
+        dispatch(setActiveIndexMenu(menuList[0]));
+    }
 
-    const selectionMenu = (item) => {
+    const selectionMenu = (item ) => {
         const index = menuList.find((x) => x.name === item);
-        dispatch(setActiveIndexMenu(index));
+            dispatch(setActiveIndexMenu(index));
+        
     }
 
     return(
@@ -29,7 +32,7 @@ const Menu = () => {
             </div>
             <nav className="menu_nav">
                 <div className="menu_list">
-                    {menuList.map(({ name, svgName }) => (
+                    {menuList.map(({name, svgName }) => (
                     <div 
                     key={name} 
                     className={activeIndexMenu.name === name ? 'menu_item menu_item--active' : 'menu_item'}

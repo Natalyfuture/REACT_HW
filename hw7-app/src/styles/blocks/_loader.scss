@@ -1,68 +1,25 @@
 .loader{
-    width: 1440px;
+    max-width: 120vw;
+    max-height: 100vh;
     display: flex;
     border-radius: 30px;
     background:transparent;
     z-index: 50;
     position: absolute;
-    @media (max-width: 1440px ) {
-        width: 1170px;
-    }
-    @media (max-width: 1200px ) {
-        width: 1040px;
-    }
-    @media (max-width: 1090px ) {
-        width: 750px;
-    }
-    @media (max-width: 800px ) {
-        width: 500px;
-    }
-    @media (max-width: 550px ) {
-        width: 458px;
-    }
-    @media (max-width: 480px ) {
-        width: 340px;
-    }
-    @media (max-width: 360px ) {
-        width: 300px;
-    }
     
     &_wrapper{
         position: absolute;
-        top: -150px;
-        left: 0;
+        z-index: 50;
+        top: 0px;
+        left: -20px;
+       
     }
     &-container{
-        width: 720px;
-        height: 1052px;
-        background: #EAF1FE;
-        border-radius: 30px;
         position: relative;
+        width: 100vw;
+        height: 100vh;
+        background: #EAF1FE;
         transition: all 0.5s ease-in-out;
-        @media (min-width: 1440px ) {
-            width: 720px;
-            height: 1042px;
-        }
-        @media (max-width: 1440px ) {
-            width: 585px;
-            height: 1000px;
-        }
-        @media (max-width: 1200px ) {
-            width: 520px;
-            height: 1532px;
-        }
-        @media (max-width: 1090px ) {
-            width: 375px;
-            height: 1593px;
-        }
-        @media (max-width: 800px ) {
-            width: 250px;
-            height: 2255px;
-        }
-        @media (max-width: 550px ) {
-            width: 229px;
-            height: 2515px;
-        }
 
 
         &--active_left{
@@ -86,41 +43,25 @@
         &_left{
             right: 0;
             top: 358px;
-           @media (min-width: 1440px) {
+           @media (max-width: 1440px) {
             top: 358px;
-           }
-           @media (max-width: 1200px) {
-            top: 758px;
-           }
-           @media (max-width: 550px) {
-            top: 1058px;
            }
 
         }
         &_right{
             left: -123px;
             top:358px;
-            @media (min-width: 1440px) {
+            @media (max-width: 1440px) {
                 top: 358px;
-               }
-               @media (max-width: 1200px) {
-                top: 758px;
-               }
-               @media (max-width: 550px) {
-                top: 1058px;
                }
      
         }
         &-title{
-            font-family: 'Spartan';
-            font-style: normal;
             font-weight: 800;
             font-size: 72px;
             text-align: center;
         }
         &-text{
-            font-family: 'Spartan';
-            font-style: normal;
             font-weight: 800;
             font-size: 24px;
             text-align: center;
@@ -133,7 +74,7 @@
                 bottom: -50px;
                 left: -120px;
                 transform: rotate(-20deg);
-                @media (min-width: 1440px ) {
+                @media (max-width: 1440px ) {
                     bottom: 50px;
                     left: -120px;
                 }

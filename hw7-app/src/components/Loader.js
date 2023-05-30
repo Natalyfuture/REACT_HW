@@ -5,17 +5,16 @@ import Cheese from '../assets/images/cheese .png';
 import BittenApple from '../assets/icons/bitten-apple.svg';
 import Fire from '../assets/icons/fire.svg';
 import Orange from '../assets/icons/orange.svg';
-import '../css/main.css';
 
 
-export const Loader = ({ setLoaderOff}) => {
+export const Loader = ({loaderOff, setLoaderOff}) => {
     const [expanded, setExpanded] = useState(false);
 
    useEffect(() => {
-    if (!expanded) {
+    if (!expanded && !loaderOff)  {
       const timer = setTimeout(() => {
         setExpanded(true);
-      }, 3000); 
+      }, 1500); 
       return () => clearTimeout(timer);
     }
   }, [expanded]); 
@@ -23,7 +22,7 @@ export const Loader = ({ setLoaderOff}) => {
   const handleAnimationEnd = () => {
     setLoaderOff(true);
 }
-
+   
     return(
         <div className="loader container">
             <div className={ expanded ? "loader-container loader-container--active_left" : "loader-container"}>
